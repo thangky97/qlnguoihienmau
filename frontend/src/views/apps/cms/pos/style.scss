@@ -1,0 +1,111 @@
+.content-wrapper {
+  margin-top: -2rem !important;
+}
+
+.bg-color-last-month {
+  background-color: #005bdf;
+}
+
+.search-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.table-chart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
+.table-chart-container .table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto; /* Đảm bảo có thể cuộn ngang khi cần thiết */
+}
+
+.table-chart-container .table td {
+  text-align: left; /* Center-align text in all table cells */
+  max-width: 120px; /* Set a maximum width for cells */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  white-space: wrap; /* Prevent text wrapping */
+  //   font-size: 8pt !important;
+  border: 1px solid #ddd;
+  text-transform: capitalize !important;
+}
+.table-chart-container .table th {
+  text-align: left; /* Center-align text in all table cells */
+  max-width: 120px; /* Set a maximum width for cells */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  white-space: wrap; /* Prevent text wrapping */
+  //   font-size: 8pt !important;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  text-transform: capitalize !important;
+}
+
+/* Tạo kiểu cho các hàng */
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Media Queries để ẩn bớt cột khi màn hình nhỏ */
+@media screen and (max-width: 1600px) {
+  .table-chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Cho phép các phần tử trong container tự động xuống dòng */
+  }
+
+  .table-chart {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .table th,
+  .table td {
+    padding: 0.72rem 2rem !important;
+  }
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table th[rowspan="2"] {
+  vertical-align: middle;
+}
+
+.table th[colspan="5"] {
+  text-align: center;
+}
+
+.namecol {
+  width: 20%;
+  line-break: auto;
+}
+
+.sumaryreport-table
+{
+  background-color: #fff !important;
+  padding: 1rem;
+  border-radius: 3px;  
+}

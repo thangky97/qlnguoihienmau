@@ -1,0 +1,117 @@
+/*================================================================================
+	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+	Version: 2.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+// [dir] .PhoneInput {
+// 	.PhoneInputInput{
+// 		border: unset;
+// 	}
+// }
+// .form-control.PhoneInput{
+// 	margin-top: 0 !important;
+// 	margin-left: 0 !important;
+// 	padding: 19px 17px !important;
+// }
+// .PhoneInputInput {
+// 	// padding: 0.438rem 1rem !important;
+// 	// background-color: #293046;
+// 	// background-clip: padding-box;
+// 	// border: 1px solid #404656;
+// 	border: unset !important;
+// 	// color: #b5b7bd;
+// 	// border-radius: 0.357rem;
+
+// 	&:focus-visible {
+// 	  outline: unset !important;
+// 	}
+//   }
+.status-warning .select__single-value {
+  color: rgb(207, 170, 38) !important;
+}
+.status-success .select__single-value {
+  color: greenyellow !important;
+}
+.status-danger .select__single-value {
+  color: red !important;
+}
+.text-white-select__single-value {
+  color: white !important;
+}
+.select-status__control {
+  .select-status__single-value {
+    color: white;
+    font-weight: bold;
+  }
+}
+
+html[dir] body {
+  .datepicker {
+    background-color: white;
+  }
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected {
+    background-color: #6b5fe7 !important;
+  }
+}
+[dir] body.dark-layout {
+  .datepicker {
+    background-color: #293046;
+  }
+  .react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header {
+    color: white !important;
+  }
+  .react-datepicker {
+    background-color: #293046;
+    color: white !important;
+
+    .react-datepicker__header {
+      background-color: #293046 !important;
+      color: white !important;
+    }
+    .react-datepicker__month-select,
+    .react-datepicker__year-select {
+      background-color: #293046 !important;
+      color: white !important;
+    }
+  }
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    color: white !important;
+    &:hover {
+      color: black !important;
+    }
+  }
+}
+
+.react-datepicker__header__dropdown--select {
+  padding: 10px 0px !important;
+}
+
+@media screen and (max-width: "570px") {
+  .dataTable-filter {
+    max-width: unset;
+  }
+}
+
+.react-datepicker__input-container .disabledDatePicker {
+  background-color: #efefef;
+}
+
+.react-datepicker-wrapper {
+  display: block !important;
+}
+
+body{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+  font-size: 13px !important;
+}

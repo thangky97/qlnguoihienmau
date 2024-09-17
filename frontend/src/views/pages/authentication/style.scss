@@ -1,0 +1,25 @@
+.container-login {
+  .btn-login {
+    border-color: #005bdf !important;
+    background-color: #005bdf !important;
+  }
+
+  .btn-login:hover {
+    background-color: #005bdf;
+    border-color: #005bdf;
+  }
+
+  .btn-login:focus {
+    background-color: #005bdf;
+    border-color: #005bdf;
+  }
+
+  .btn-login:hover:not(.disabled):not(:disabled) {
+    box-shadow: 0 8px 25px -8px #005bdf;
+  }
+
+  .btn-secondary {
+    border-color: #005bdf !important;
+    background-color: #005bdf !important;
+  }
+}

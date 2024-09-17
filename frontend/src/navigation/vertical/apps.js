@@ -1,0 +1,125 @@
+import {
+  CreditCard,
+  Database,
+  ShoppingBag,
+  Users,
+  Calendar,
+  HardDrive,
+  PieChart,
+  Tool,
+  Folder,
+  Flag,
+  FolderMinus,
+  Book,
+  User,
+} from "react-feather";
+import { ACTION, MANAGEMENT, ROLES_APP } from "../../constants/app";
+export default [
+  {
+    id: "dashboard",
+    title: "Tổng quan",
+    icon: <PieChart size={20} />,
+    navLink: "/apps/cms/pos",
+    // default: true,
+    defaultGroup: [MANAGEMENT.REPORT],
+    action: ACTION.VIEW,
+  },
+  // {
+  //   id: "inquiry",
+  //   title: "Nhu cầu khách hàng",
+  //   icon: <Flag size={12} />,
+  //   navLink: "/apps/inquiry/list",
+  //   management: MANAGEMENT.INQUIRY,
+  //   role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+  //   action: ACTION.VIEW,
+  // },
+  // {
+  //   id: "listcontract",
+  //   title: "Hợp đồng",
+  //   icon: <Book size={12} />,
+  //   navLink: "/apps/contract/list",
+  //   role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+  //   action: ACTION.VIEW,
+  // },
+  // {
+  //   id: "list",
+  //   title: "Công việc",
+  //   icon: <FolderMinus size={12} />,
+  //   navLink: "/apps/job/list",
+  //   role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+  //   action: ACTION.VIEW,
+  // },
+  // {
+  //   id: "workingprocesstemplate",
+  //   title: "Quy trình công việc mẫu",
+  //   icon: <HardDrive size={12} />,
+  //   navLink: "/apps/category/workingprocesstemplate/list",
+  //   role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+  //   action: ACTION.VIEW,
+  // },
+  // {
+  //   id: "report_task",
+  //   title: "Báo cáo tình hình CV",
+  //   icon: <CreditCard size={20} />,
+  //   navLink: "/apps/report/list",
+  //
+  //   role: [
+  //     ROLES_APP.ADMIN,
+  //     ROLES_APP.STAFF,
+  //   ],
+  //   action: ACTION.VIEW,
+  // },
+
+  // Hệ thống
+  // {
+  //   id: "jobfield",
+  //   title: "Lĩnh vực",
+  //   icon: <HardDrive size={12} />,
+  //   navLink: "/apps/category/jobfield/list",
+  //   role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+  //   action: ACTION.VIEW,
+  // },
+  {
+    id: "list_user",
+    title: "Nhân viên",
+    icon: <User size={20} />,
+    navLink: "/apps/user/list",
+    role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+    action: ACTION.VIEW,
+  },
+
+  {
+    id: "list_customer",
+    title: "Người hiến máu",
+    icon: <Users size={20} />,
+    navLink: "/apps/customer/list",
+    role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+    action: ACTION.VIEW,
+  },
+
+  // Menu khách hàng
+  {
+    id: "home",
+    title: "Kho Tour",
+    icon: <Database size={20} />,
+    navLink: "/home",
+    role: [ROLES_APP.CUSTOMER],
+    isShowTour: true,
+  },
+  {
+    id: "home",
+    title: "Đơn hàng của tôi",
+    icon: <ShoppingBag size={20} />,
+    navLink: "/my-order",
+    role: [ROLES_APP.CUSTOMER],
+    isShowTour: true,
+  },
+  {
+    id: "history-payment",
+    title: "Lịch sử thanh toán",
+    icon: <CreditCard size={20} />,
+    navLink: "/history-payment",
+    role: [ROLES_APP.CUSTOMER],
+    isShowTour: true,
+  },
+];

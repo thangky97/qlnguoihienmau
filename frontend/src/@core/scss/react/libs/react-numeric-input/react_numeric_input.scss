@@ -1,0 +1,47 @@
+.react-numeric-input {
+  width: 100%;
+  input {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px !important;
+    outline: none;
+    padding: 10px !important;
+  }
+  wrap: {
+    background: "#E2E2E2";
+    padding: "2px 2.26ex 2px 2px";
+  }
+}
+#prices {
+  display: block;
+  padding: 8px 1rem;
+  width: 100%;
+  color: #6e6b7b;
+  background-color: #fff;
+  border: 1px solid #d8d6de;
+  border-radius: 0.357rem;
+  outline: none;
+}
+#price_disibale {
+  display: block;
+  padding: 8px 1rem;
+  width: 100%;
+  color: #6e6b7b;
+  background-color: #efefef;
+  border: 1px solid #d8d6de;
+  border-radius: 0.357rem;
+  outline: none;
+}
+// #row-4 span {
+//   font-weight: bold;
+// }
+#buttons {
+  margin-bottom: 170px !important;
+}
+.sc-fzpjYC :last-child {
+  font-family: sans-serif;
+  font-weight: bold !important;
+}
+.detail {
+  font-weight: 100 !important;
+}

@@ -1,0 +1,60 @@
+export default function Columns() {
+  return [
+    {
+      name: "Nhân viên",
+      minWidth: "200px",
+      selector: (row) => row.userName,
+      sortable: true,
+      sortField: "code",
+      cell: (row) => row?.userName,
+    },
+    {
+      name: "Phòng ban",
+      minWidth: "200px",
+      selector: (row) => row.departmentName,
+      sortable: true,
+      sortField: "code",
+      cell: (row) => row?.departmentName,
+    },
+    {
+      name: "sl nhiệm vụ",
+      minWidth: "200px",
+      selector: (row) => row.total,
+      sortable: true,
+      sortField: "code",
+      cell: (row) => row?.total,
+    },
+    {
+      name: "đúng hạn",
+      minWidth: "200px",
+      selector: (row) => row.normal,
+      sortable: true,
+      sortField: "code",
+      cell: (row) => row?.normal,
+    },
+    {
+      name: "quá hạn",
+      minWidth: "200px",
+      selector: (row) => row.overdue,
+      sortable: true,
+      sortField: "code",
+      cell: (row) => row?.overdue,
+    },
+    {
+      name: "tỉ lệ đúng hạn",
+      minWidth: "200px",
+      selector: (row) => row.normalPercentage,
+      sortable: true,
+      sortField: "code",
+      cell: (row) => `${row?.normalPercentage} %`,
+    },
+    {
+      name: "tỉ lệ quá hạn",
+      minWidth: "200px",
+      selector: (row) => row.overduePercentage,
+      sortable: true,
+      sortField: "code",
+      cell: (row) => `${row?.overduePercentage} %`,
+    },
+  ];
+}

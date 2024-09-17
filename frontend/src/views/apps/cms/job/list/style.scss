@@ -1,0 +1,92 @@
+.content-wrapper {
+  margin-top: -2rem !important;
+}
+
+.table-job {
+  .rdt_TableRow {
+    padding: 1.1rem 0rem 4.5rem 0rem !important;
+  }
+}
+
+.table-task {
+  min-height: 2250px !important;
+  max-height: var(--screen-height) !important;
+  .rdt_TableRow {
+    padding: 1rem 0rem 5.2rem 0rem !important;
+  }
+
+  :root {
+    --screen-height: calc(100vh - 420px);
+  }
+
+  .fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff; /* Optional: to ensure background visibility */
+    padding: 10px; /* Optional: to add some padding */
+    z-index: 1000; /* Optional: to ensure it is above other content */
+  }
+
+  .fixed-bottom .pagination {
+    margin: 0;
+  }
+}
+
+.table-my-job {
+  .rdt_TableRow {
+    padding: 1.6rem 0rem 5.3rem 0rem !important;
+  }
+}
+
+
+/* Ensure badges have the same width and alignment */
+.equal-width-badge {
+  display: inline-block;
+  width: 100px; /* Set a fixed width */
+  text-align: center; /* Center align the text */
+  padding: 5px 0; /* Add some padding */
+  margin-top: 5px !important;
+  cursor: pointer;
+}
+
+/* Optional: add some margin to separate the badges */
+.equal-width-badge + .equal-width-badge {
+  margin-left: 10px; /* Adjust the spacing between badges */
+}
+
+
+// css cua task list tat ca job
+.badge-container {
+  display: flex;
+  flex-direction: column; /* Stack badges vertically */
+  gap: 0.5rem; /* Space between badges */
+}
+
+.badge-container .badge {
+  width: 100%; /* Ensure all badges take the full width of the container */
+  text-align: center; /* Center the text inside the badge */
+}
+
+
+.status-container {
+  padding-top: 7px;
+  // font-family: Arial, sans-serif; /* Adjust font family as needed */
+}
+
+.status-label {
+  font-weight: bold;
+}
+
+.status-text {
+  padding-top: 5px;
+  // font-size: 14px; /* Adjust font size as needed */
+}
+
+.custom-row {
+  margin-left: 0px;
+}
+
+
+

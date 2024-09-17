@@ -1,0 +1,107 @@
+@import "./base/bootstrap.scss";
+@import "./base/bootstrap-extended.scss";
+@import "./base/colors.scss";
+@import "./base/components.scss";
+
+// Themes
+@import "./base/themes/dark-layout.scss";
+@import "./base/themes/bordered-layout.scss";
+@import "./base/themes/semi-dark-layout.scss";
+// @import './base/custom-rtl.scss';
+
+// React Specific
+@import "react/index";
+
+//
+[dir="ltr"] .main-menu.menu-light .navigation > li.active > a {
+  background: linear-gradient(118deg, #005bdf, #005bdf) !important;
+}
+
+.main-menu.menu-light .navigation > li.active > a {
+  box-shadow: 0 0 10px 1px #6c98da;
+  border-radius: 4px;
+}
+
+.main-menu .navbar-header .navbar-brand .brand-text {
+  // color: #005bdf;
+  // color: #0a662d;
+  color: #fff;
+  font-size: 12pt;
+  display: inline-block;
+  width: 100%; /* Adjust this width as needed */
+  white-space: normal;  
+  text-align: center; /* Optional: To center align the text */
+  word-break: break-word; /* Ensure the text breaks onto the next line if it’s too long */
+}
+
+.main-menu .navbar-header .navbar-brand .brand-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Optional: Center align the text */
+}
+
+[dir=ltr] .main-menu.menu-light .navigation > li ul .active {
+    background: linear-gradient(118deg, #005bdf, #005bdf);
+}
+
+[dir] .main-menu.menu-light .navigation > li ul .active {
+    box-shadow: 0 0 10px 1px #6c98da;
+    border-radius: 4px;
+}
+
+.customizer .customizer-toggle {
+  background: #005bdf;
+}
+
+.btn-primary {
+  border-color: #005bdf !important;
+  background-color: #005bdf !important;
+}
+
+.btn-primary:hover {
+  background-color: #005bdf !important;
+  border-color: #005bdf !important;
+}
+
+.btn-primary:focus {
+  background-color: #005bdf !important;
+  border-color: #005bdf !important;
+}
+
+.badge-primary {
+  background-color: #005bdf !important;
+}
+
+.btn-primary:hover:not(.disabled):not(:disabled) {
+  box-shadow: 0 8px 25px -8px #005bdf !important;
+}
+
+.page-item.active .page-link {
+  background-color: #005bdf;
+}
+
+.page-item.active .page-link {
+  background-color: #005bdf;
+  border-color: #005bdf;
+}
+
+.vertical-layout.vertical-menu-modern.menu-collapsed .main-menu:not(.expanded) .navigation li.active a {
+ color: #fff !important; 
+}
+
+.nav-tabs .nav-item {
+  margin-left: 0px !important;
+}
+
+.sc-fzpjYC :last-child {
+  // font-family: sans-serif;
+  font-weight: 400 !important;
+}
+
+body{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+  // font-size: 14px !important;
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
+
+}

@@ -1,0 +1,18 @@
+.task-content {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+  }
+  
+  .badge-container {
+    display: none; /* Hide badges by default */
+    margin-top: 5px; /* Add some space between the content and badges */
+  }
+  
+  .task-content:hover .badge-container {
+    display: flex; /* Show badges when hovering over the content */
+    gap: 5px; /* Space between the badges */
+  }
+
+  
+  

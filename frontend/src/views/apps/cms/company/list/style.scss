@@ -1,0 +1,24 @@
+.table-list-company {
+  .rdt_TableRow {
+    padding: 0.5rem 1.5rem 0.5rem 0rem !important;
+  }
+
+  .sc-fzpjYC {
+    .company {
+      // font-family: Montserrat, Helvetica, Arial, serif !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  .company {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .company-mxh {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+}

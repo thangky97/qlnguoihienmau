@@ -1,0 +1,58 @@
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table-inquiry {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto; /* Đảm bảo có thể cuộn ngang khi cần thiết */
+}
+
+.table-inquiry td {
+  text-align: center; /* Center-align text in all table cells */
+  max-width: 120px; /* Set a maximum width for cells */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  white-space: wrap; /* Prevent text wrapping */
+  text-transform: capitalize !important;
+  //   font-size: 8pt !important;
+  border: 1px solid #ddd;
+  // padding: 1rem 2rem;
+}
+.table-inquiry th {
+  text-align: center; /* Center-align text in all table cells */
+  max-width: 120px; /* Set a maximum width for cells */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  white-space: wrap; /* Prevent text wrapping */
+  text-transform: uppercase !important;
+  //   font-size: 8pt !important;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  // padding: 1rem 2rem;
+}
+
+/* Tạo kiểu cho các hàng */
+// .table tr:nth-child(even) {
+//   background-color: #f9f9f9;
+// }
+
+/* Media Queries để ẩn bớt cột khi màn hình nhỏ */
+@media screen and (max-width: 1600px) {
+  // .table-inquiry {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: flex-start;
+  //   margin-top: 20px;
+  //   flex-wrap: wrap; /* Cho phép các phần tử trong container tự động xuống dòng */
+  // }
+}
+
+
+.badge-block {
+  width: 80px !important;
+  cursor: pointer;
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}

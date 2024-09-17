@@ -1,0 +1,49 @@
+.badge-important {
+    background-color: #FF6384 !important; /* Red for "Chưa xử lý" */
+  }
+  
+  .badge-important.processing-status--on-time {
+    background-color: #36A2EB !important; /* Blue for "Đang xử lý" */
+  }
+  
+  .badge-important.processing-status--completed {
+    background-color: #4BC0C0 !important; /* Teal for "Đã hoàn thành" */
+  }
+  
+  .badge-important.processing-status--canceled {
+    background-color: #FF9F40 !important; /* Orange for "Hủy" */
+  }
+.department-column {
+  width: 150px; /* Hoặc kích thước bạn muốn */
+}
+
+.content-column {
+  width: 300px; /* Kích thước cho cột Nội dung */
+  text-transform: capitalize !important;
+}
+
+.deadline-column {
+  width: 200px; /* Kích thước cho cột Deadline */
+  text-transform: capitalize !important;
+
+}
+
+.content-cell {
+  width: 300px; /* Kích thước ô Nội dung */
+}
+
+.deadline-cell {
+  width: 200px; /* Kích thước ô Deadline */
+}
+@media (min-width: 992px) {
+  .content-column, .content-cell {
+    width: 300px;
+  }
+  .deadline-column, .deadline-cell {
+    width: 200px;
+  }
+}
+
+
+
+// new 

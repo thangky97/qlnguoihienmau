@@ -1,0 +1,30 @@
+.PhoneInput {
+  /* This is done to stretch the contents of this component. */
+  // display: flex;
+  // align-items: center;
+  // flex-grow: 1;
+  // // margin-left: 5px;
+  // border-radius: 5px;
+  
+  // border: 1px solid #7e7e7e4f !important;
+  // background: none;
+  .PhoneInputCountry {
+    // margin-left: 5px;
+    // border-right: 1px solid #72716e7a;
+    // padding: 10px;
+  }
+  .PhoneInputInput {
+    border: unset !important;
+    // flex: 1;
+    // padding: 8px;
+    // width: 100%;
+    // min-width: 0;
+    // color: #283046;
+    background: transparent !important;
+    // background: none;
+    // outline: none;
+    &:focus-visible{
+      outline: unset;
+    }
+  }
+}

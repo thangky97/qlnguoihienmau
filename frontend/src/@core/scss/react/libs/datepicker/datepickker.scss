@@ -1,0 +1,16 @@
+.datepicker {
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #a89d8a54;
+  outline: none;
+  width: 100%;
+  background: none;
+  color: #636060;
+}
+.text_checkbox {
+  display: flex;
+  .checkbox_input {
+    display: block;
+    width: 25px;
+  }
+}
