@@ -48,7 +48,7 @@ const Login = (props) => {
   });
   const history = useHistory();
   const illustration =
-      skin === "dark" ? "login-v2-dark.svg" : "login-qlcongviec.jpg",
+      skin === "dark" ? "login-v2-dark.svg" : "content-img-4.jpg",
     source = require(`@src/assets/images/pages/${illustration}`).default;
 
   const onSubmit = (data) => {
@@ -206,7 +206,7 @@ const Login = (props) => {
                 </FormGroup>
                 <Button.Ripple
                   type="submit"
-                  className="btn-login"
+                  className="btn-login mt-3"
                   block
                   disabled={disable}
                 >
