@@ -314,6 +314,60 @@ const AppRoutes = [
     management: MANAGEMENT.JOB,
     action: ACTION.UPDATE,
   },
+
+  //danh mục envent
+  {
+    path: "/apps/category-post/list",
+    component: lazy(() => import("../../views/apps/cms/categoryPost/list")),
+    management: MANAGEMENT.USER,
+    action: ACTION.VIEW,
+  },
+  {
+    path: "/apps/category-post/add",
+    component: lazy(() =>
+      import("../../views/apps/cms/categoryPost/add/index")
+    ),
+    meta: {
+      navLink: "/apps/category-post/add",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.CREATE,
+  },
+  {
+    path: "/apps/category-post/edit/:id",
+    component: lazy(() => import("../../views/apps/cms/categoryPost/edit")),
+    meta: {
+      navLink: "/apps/category-post/edit",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.UPDATE,
+  },
+
+  //envent-blog
+  {
+    path: "/apps/envent/list",
+    component: lazy(() => import("../../views/apps/cms/envent/list")),
+    management: MANAGEMENT.USER,
+    action: ACTION.VIEW,
+  },
+  {
+    path: "/apps/envent/add",
+    component: lazy(() => import("../../views/apps/cms/envent/add/index")),
+    meta: {
+      navLink: "/apps/envent/add",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.CREATE,
+  },
+  {
+    path: "/apps/envent/edit/:id",
+    component: lazy(() => import("../../views/apps/cms/envent/edit")),
+    meta: {
+      navLink: "/apps/envent/edit",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.UPDATE,
+  },
 ];
 
 export default AppRoutes;

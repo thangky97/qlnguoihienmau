@@ -523,3 +523,7 @@ export const SCHEMA_TASK = {
   workstatus: yup.object().required("Vui lòng chọn tình trạng"),
   processDate: yup.string().required("Vui lòng chọn ngày làm việc").nullable(),
 };
+
+export const SCHEMA_ADD_CATEGORY_POST = {
+  name: yup.string().required("Vui lòng nhập tên danh mục"),
+};

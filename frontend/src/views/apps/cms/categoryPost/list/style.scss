@@ -1,0 +1,64 @@
+.table-list-customer {
+  .rdt_TableRow {
+    padding: 0.5rem 0rem 0.5rem 0rem !important;
+  }
+
+  .sc-fzpjYC {
+    .name,
+    .phone,
+    .gender {
+      // font-family: Montserrat, Helvetica, Arial, serif !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+// css cua task list tat ca job
+.badge-container {
+  display: flex;
+  flex-direction: column; /* Stack badges vertically */
+  gap: 0.01rem; /* Space between badges */
+}
+
+.badge-container .badge {
+  width: 100%; /* Ensure all badges take the full width of the container */
+  text-align: center; /* Center the text inside the badge */
+}
+
+
+.table-list-user {
+  
+  .rdt_TableRow {
+    padding: 0rem 0rem 0rem 0rem !important;
+  }
+
+  .sc-fzpjYC {
+    .name,
+    .phone,
+    .gender {
+      font-family: Montserrat, Helvetica, Arial, serif !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+}
+.card-body{
+  padding: 0rem !important;
+}
+.table-department{
+  margin-top: 0rem !important;
+}
+.content-wrapper {
+  margin-top: -2rem !important;
+}

@@ -480,8 +480,67 @@ export const GET_FIND_JOB = {
   method: "GET",
 };
 
-
 export const UPDATE_CONTRACT_TASKS_STATUS = {
   path: "/contract/update-contract-tasks-status",
+  method: "POST",
+};
+
+//danh mục post
+export const GET_LIST_CATEGORY_POST = {
+  path: "/category_post/find",
+  method: "POST",
+};
+
+export const GET_ALL_CATEGORY_POST = {
+  path: "/category_post/find-all",
+  method: "GET",
+};
+
+export const CREATE_CATEGORY_POST = {
+  path: "/category_post/create",
+  method: "POST",
+};
+export const UPDATE_CATEGORY_POST = {
+  path: "/category_post/update",
+  method: "POST",
+};
+
+export const GET_DETAIL_CATEGORY_POST = {
+  path: "/category_post/get-detail",
+  method: "GET",
+};
+
+export const DELETE_CATEGORY_POST = {
+  path: "/category_post/delete",
+  method: "POST",
+};
+
+//api envent: sự kiện - tin tức
+export const GET_LIST_ENVENT = {
+  path: "/envent/find",
+  method: "POST",
+};
+
+export const GET_ALL_ENVENT = {
+  path: "/envent/find-all",
+  method: "GET",
+};
+
+export const CREATE_ENVENT = {
+  path: "/envent/create",
+  method: "POST",
+};
+export const UPDATE_ENVENT = {
+  path: "/envent/update",
+  method: "POST",
+};
+
+export const GET_DETAIL_ENVENT = {
+  path: "/envent/get-detail",
+  method: "GET",
+};
+
+export const DELETE_ENVENT = {
+  path: "/envent/delete",
   method: "POST",
 };

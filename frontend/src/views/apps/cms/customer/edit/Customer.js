@@ -23,6 +23,9 @@ import "react-phone-number-input/style.css";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { SCHEMA_ADD_CUSTOMER } from "../../../../../constants/validation";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 
 const statusObject = {
   ACTIVE: { value: "active", label: "Đang hoạt động", number: 1 },
@@ -41,6 +44,9 @@ const CustomerTab = ({ initial }) => {
   const initialValues = {
     ...initial,
     status: statusObject[initial?.status],
+    date_birthday: new Date(
+      moment(initial?.date_birthday, "YYYY/MM/DD").toDate()
+    ),
   };
 
   const [value, setValue] = useState(initial?.phone);
@@ -48,6 +54,7 @@ const CustomerTab = ({ initial }) => {
     handleSubmit,
     formState: { errors },
     control,
+    register,
     reset,
   } = useForm({
     defaultValues: initialValues,
@@ -81,12 +88,23 @@ const CustomerTab = ({ initial }) => {
         phone: value || "",
         address: values?.address || "",
         description: values?.description || "",
-        tax_code: values?.tax_code || "",
-        loaiHinh: values?.loaiHinh || "",
+        tax_code: "",
+        loaiHinh: "",
         status: values.status.value,
         company_id: null,
         email: values.email.trim() || "",
         branch_id: null,
+        password: values?.password || "123456",
+        date_birthday: moment(values?.date_birthday).format("YYYY/MM/DD"),
+        weight: values?.weight,
+        height: values?.height,
+        nhommau: values?.nhommau || "",
+        huyetap: values?.huyetap || "",
+        hemoglobin: values?.hemoglobin || "",
+        tinhtrangbenhly: values?.tinhtrangbenhly || "",
+        tieususdthuoc: values?.tieususdthuoc || "",
+        duchitieuhien: values?.duchitieuhien || "",
+        luongmauhien: values?.luongmauhien || "",
       });
 
       if (result.isSuccess) {
@@ -113,7 +131,7 @@ const CustomerTab = ({ initial }) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Row>
-        <Col sm="4">
+        <Col sm="3">
           <FormGroup>
             <Label for="name">Tên</Label>
             <Controller
@@ -133,7 +151,7 @@ const CustomerTab = ({ initial }) => {
             </small>
           </FormGroup>
         </Col>
-        <Col sm="4">
+        <Col sm="3">
           <FormGroup>
             <Label for="name">Số điện thoại</Label>
             <PhoneInput
@@ -164,7 +182,7 @@ const CustomerTab = ({ initial }) => {
           </FormGroup>
         </Col>
 
-        <Col sm="4">
+        <Col sm="3">
           <FormGroup>
             <Label for="email"> </Label>
             Email
@@ -186,50 +204,7 @@ const CustomerTab = ({ initial }) => {
           </FormGroup>
         </Col>
 
-        <Col sm="3">
-          <FormGroup>
-            <Label for="tax_code">Mã số thuế</Label>
-            <Controller
-              name="tax_code"
-              control={control}
-              render={({ field }) => <Input {...field} />}
-            />
-          </FormGroup>
-        </Col>
-
-        <Col sm="3">
-          <FormGroup>
-            <Label for="name">Địa chỉ</Label>
-            <Controller
-              name="address"
-              control={control}
-              render={({ field }) => <Input {...field} />}
-            />
-          </FormGroup>
-        </Col>
-
-        <Col sm="3">
-          <FormGroup>
-            <Label for="loaiHinh">Loại hình</Label>
-            <Controller
-              name="loaiHinh"
-              control={control}
-              render={({ field }) => (
-                <Input
-                  className={classnames({
-                    "is-invalid": errors["loaiHinh"],
-                  })}
-                  {...field}
-                />
-              )}
-            />
-            <small className="text-danger">
-              {errors?.loaiHinh && errors.loaiHinh.message}
-            </small>
-          </FormGroup>
-        </Col>
-
-        <Col md="3" className="mb-2">
+        <Col md="3">
           <FormGroup>
             <Label>Trạng thái:</Label>
             <Controller
@@ -266,6 +241,196 @@ const CustomerTab = ({ initial }) => {
             <small className="text-danger">
               {errors?.status && errors.status.message}
             </small>
+          </FormGroup>
+        </Col>
+
+        <Col sm="2" className="section">
+          <Label>
+            Năm sinh <span className="text-danger">*</span>
+          </Label>
+          <Controller
+            control={control}
+            name="date_birthday"
+            className={classnames({
+              "is-invalid": errors["date_birthday"],
+            })}
+            innerRef={register}
+            render={({ field }) => (
+              <DatePicker
+                name="date_birthday"
+                id="date_birthday"
+                className={classnames(
+                  "form-control",
+                  errors.date_birthday?.message
+                    ? "datepicker border border-danger"
+                    : "datepicker"
+                )}
+                innerRef={register}
+                onChange={(date) => {
+                  field.onChange(date);
+                }}
+                dateFormat="yyyy/MM/dd"
+                selected={field.value}
+                value={field.value}
+                selectsStart
+              />
+            )}
+          />
+          <small className="text-danger pt-1">
+            {errors.date_birthday?.message}
+          </small>
+        </Col>
+
+        <Col sm="2">
+          <FormGroup>
+            <Label for="weight">
+              Cân nặng <span className="text-danger">*</span>
+            </Label>
+            <Controller
+              name="weight"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  className={classnames({
+                    "is-invalid": errors["weight"],
+                  })}
+                  {...field}
+                />
+              )}
+            />
+            <small className="text-danger">
+              {errors?.weight && errors.weight.message}
+            </small>
+          </FormGroup>
+        </Col>
+
+        <Col sm="2">
+          <FormGroup>
+            <Label for="height">
+              Chiều cao <span className="text-danger">*</span>
+            </Label>
+            <Controller
+              name="height"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  className={classnames({
+                    "is-invalid": errors["height"],
+                  })}
+                  {...field}
+                />
+              )}
+            />
+            <small className="text-danger">
+              {errors?.height && errors.height.message}
+            </small>
+          </FormGroup>
+        </Col>
+
+        <Col sm="2">
+          <FormGroup>
+            <Label for="nhommau">Nhóm máu </Label>
+            <Controller
+              name="nhommau"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  className={classnames({
+                    "is-invalid": errors["nhommau"],
+                  })}
+                  {...field}
+                />
+              )}
+            />
+            <small className="text-danger">
+              {errors?.nhommau && errors.nhommau.message}
+            </small>
+          </FormGroup>
+        </Col>
+
+        <Col sm="2">
+          <FormGroup>
+            <Label for="huyetap">Huyếp áp </Label>
+            <Controller
+              name="huyetap"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  className={classnames({
+                    "is-invalid": errors["huyetap"],
+                  })}
+                  {...field}
+                />
+              )}
+            />
+            <small className="text-danger">
+              {errors?.huyetap && errors.huyetap.message}
+            </small>
+          </FormGroup>
+        </Col>
+
+        <Col sm="2">
+          <FormGroup>
+            <Label for="hemoglobin">Hàm lượng hemoglobin </Label>
+            <Controller
+              name="hemoglobin"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  className={classnames({
+                    "is-invalid": errors["hemoglobin"],
+                  })}
+                  {...field}
+                />
+              )}
+            />
+            <small className="text-danger">
+              {errors?.hemoglobin && errors.hemoglobin.message}
+            </small>
+          </FormGroup>
+        </Col>
+
+        <Col sm="3">
+          <FormGroup>
+            <Label for="name">Lượng máu hiến</Label>
+            <Controller
+              name="luongmauhien"
+              control={control}
+              render={({ field }) => <Input {...field} />}
+            />
+          </FormGroup>
+        </Col>
+
+        <Col sm="3">
+          <FormGroup>
+            <Label for="name">Tình trạng bệnh lý</Label>
+            <Controller
+              name="tinhtrangbenhly"
+              control={control}
+              render={({ field }) => <Input {...field} />}
+            />
+          </FormGroup>
+        </Col>
+
+        <Col sm="3">
+          <FormGroup>
+            <Label for="name">Tiền sử sử dụng thuốc</Label>
+            <Controller
+              name="tieususdthuoc"
+              control={control}
+              render={({ field }) => <Input {...field} />}
+            />
+          </FormGroup>
+        </Col>
+
+        <Col sm="3">
+          <FormGroup>
+            <Label for="name">Địa chỉ</Label>
+            <Controller
+              name="address"
+              control={control}
+              render={({ field }) => <Input {...field} />}
+            />
           </FormGroup>
         </Col>
 

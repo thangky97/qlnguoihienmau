@@ -12,6 +12,8 @@ import {
   FolderMinus,
   Book,
   User,
+  AlignCenter,
+  Archive,
 } from "react-feather";
 import { ACTION, MANAGEMENT, ROLES_APP } from "../../constants/app";
 export default [
@@ -22,6 +24,22 @@ export default [
     navLink: "/apps/cms/pos",
     // default: true,
     defaultGroup: [MANAGEMENT.REPORT],
+    action: ACTION.VIEW,
+  },
+  // {
+  //   id: "list_event",
+  //   title: "Sự kiện hiến máu",
+  //   icon: <Archive size={20} />,
+  //   navLink: "/apps/envent/list",
+  //   role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+  //   action: ACTION.VIEW,
+  // },
+  {
+    id: "list_category",
+    title: "Danh mục",
+    icon: <AlignCenter size={20} />,
+    navLink: "/apps/category-post/list",
+    role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
     action: ACTION.VIEW,
   },
   // {

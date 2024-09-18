@@ -1,0 +1,57 @@
+.table-workingprocesstemplate {
+  .rdt_TableRow {
+    padding: 0.7rem 0rem 0.7rem 0rem !important;
+  }
+  .sc-fzpjYC {
+    .cloumn {
+      // font-family: Montserrat, Helvetica, Arial, serif !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  .customer-supplier {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  // .rdt_TableRow {
+  //   padding: 1rem 1.5rem 1rem 0rem !important;
+  // }
+}
+
+
+/* Define a CSS class for your DataTable */
+.react-dataTable .rdt_TableHead {
+  text-transform: none; /* Prevent capitalization */
+}
+
+.react-dataTable .rdt_TableHead th {
+  text-transform: none; /* Prevent capitalization */
+}
+
+.dataTableContainer {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+  width: 100%; /* Ensure container takes full width */
+}
+
+.react-dataTable {
+  min-width: 600px; /* Adjust as needed for your minimum table width */
+}
+
+
+
+// css cua task list tat ca job
+.badge-container {
+  // display: flex;
+  // flex-direction: column; /* Stack badges vertically */
+  gap: 0.01rem; /* Space between badges */
+}
+
+.badge-container .badge {
+  cursor: pointer !important;
+  width: 40% !important; /* Ensure all badges take the full width of the container */
+  text-align: center; /* Center the text inside the badge */
+  max-width: 80px !important;
+}
