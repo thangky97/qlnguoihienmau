@@ -13,6 +13,8 @@ import { Job } from '@module/job/entity/job.entity';
 import { Task } from '@module/task/entity/task.entity';
 import { NoteHistoryInquiry } from '@module/note_history_inquiry/entity/note_history_inquiry.entity';
 import { NoteHistoryContract } from '@module/note_history_contract/entity/note_history_contract.entity';
+import { CategoryPost } from '@module/category_post/entity/category_post.entity';
+import { Envent } from '@module/envent/entity/envent.entity';
 
-const typeOrm = TypeOrmModule.forFeature([User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract]);
+const typeOrm = TypeOrmModule.forFeature([User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract, CategoryPost, Envent]);
 export default typeOrm;

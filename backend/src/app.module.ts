@@ -49,6 +49,12 @@ import { NoteHistoryInquiryModule } from '@module/note_history_inquiry/note_hist
 import { NoteHistoryContract } from '@module/note_history_contract/entity/note_history_contract.entity';
 import { NoteHistoryContractModule } from '@module/note_history_contract/note_history_contract.module';
 
+import { CategoryPost } from '@module/category_post/entity/category_post.entity';
+import { CategoryPostModule } from '@module/category_post/category_post.module';
+
+import { Envent } from '@module/envent/entity/envent.entity';
+import { EnventModule } from '@module/envent/envent.module';
+
 @Module({
   imports: [
     WinstonModule.forRoot({
@@ -81,7 +87,7 @@ import { NoteHistoryContractModule } from '@module/note_history_contract/note_hi
           username: configService.get<string>('DB_USERNAME'),
           password: configService.get<string>('DB_PASSWORD'),
           database: configService.get<string>('DB_DATABASE'),
-          entities: [User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract],
+          entities: [User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract, CategoryPost, Envent],
           // logging:true,
           synchronize: true,
         };
@@ -102,6 +108,8 @@ import { NoteHistoryContractModule } from '@module/note_history_contract/note_hi
     TaskModule,
     NoteHistoryInquiryModule,
     NoteHistoryContractModule,
+    CategoryPostModule,
+    EnventModule,
   ],
   controllers: [AppController],
   providers: [
