@@ -26,14 +26,14 @@ export default [
     defaultGroup: [MANAGEMENT.REPORT],
     action: ACTION.VIEW,
   },
-  // {
-  //   id: "list_event",
-  //   title: "Sự kiện hiến máu",
-  //   icon: <Archive size={20} />,
-  //   navLink: "/apps/envent/list",
-  //   role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
-  //   action: ACTION.VIEW,
-  // },
+  {
+    id: "list_event",
+    title: "Sự kiện hiến máu",
+    icon: <Archive size={20} />,
+    navLink: "/apps/envent/list",
+    role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+    action: ACTION.VIEW,
+  },
   {
     id: "list_category",
     title: "Danh mục",

@@ -527,3 +527,29 @@ export const SCHEMA_TASK = {
 export const SCHEMA_ADD_CATEGORY_POST = {
   name: yup.string().required("Vui lòng nhập tên danh mục"),
 };
+
+export const SCHEMA_ADD_ENVENT = {
+  name: yup.string().required("Vui lòng nhập tên chương trình"),
+  event_date: yup.date().required("Vui lòng nhập ngày tổ chức"),
+  start_time: yup
+    .string()
+    .required("Vui lòng nhập thời gian bắt đầu")
+    .nullable(),
+  end_time: yup
+    .string()
+    .required("Vui lòng nhập thời gian kết thúc")
+    .nullable(),
+  location: yup.string().required("Vui lòng nhập địa điểm"),
+  blood_count: yup.string().required("Vui lòng nhập số lượng đơn vị máu"),
+  content: yup.string().required("Vui lòng nhập nội dung chương trình"),
+  // user_id: yup.object().required("Vui lòng chọn bác sĩ"),
+  user_id: yup
+    .array()
+    .of(
+      yup.object().shape({
+        value: yup.number().required(),
+        label: yup.string().required(),
+      })
+    )
+    .min(1, "Phải chọn ít nhất một bác sĩ"), // Đảm bảo chọn ít nhất 1 bác sĩ
+};

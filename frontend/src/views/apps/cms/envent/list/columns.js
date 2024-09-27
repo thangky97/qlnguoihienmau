@@ -4,14 +4,15 @@ import { checkauth } from "../../../../../utility/Utils";
 import { MANAGEMENT } from "../../../../../constants/app";
 import { toast } from "react-toastify";
 import EnventService from "../../../../../services/EnventService";
+import moment from "moment";
 
 const statusObj = {
   ACTIVE: {
-    text: "Đang hoạt động",
+    text: "Đã phê duyệt",
     bgr: "light-success",
   },
   DEACTIVE: {
-    text: "Ngừng hoạt động",
+    text: "Chưa phê duyệt",
     bgr: "light-danger",
   },
 };
@@ -39,44 +40,76 @@ export default function Columns(userData, handleGetlist) {
 
   return [
     {
-      name: "Lĩnh vực",
-      minWidth: "140px",
-      selector: (row) => row.jobfield_id,
-      sortable: true,
-      sortField: "jobfield_id",
-      cell: (row) => row?.jobfield?.name,
-    },
-    {
-      name: "Tên nhiệm vụ",
-      minWidth: "250px",
+      name: "Tên sự kiện",
+      minWidth: "150px",
       selector: (row) => row.name,
       sortable: true,
       sortField: "name",
       cell: (row) => row?.name,
     },
     {
-      name: "Phòng ban",
+      name: "Ngày tổ chức",
       minWidth: "150px",
-      selector: (row) => row?.departmentld,
+      selector: (row) => row?.event_date,
       sortable: true,
-      sortField: "department_id",
-      cell: (row) => row?.departmentld?.name,
+      sortField: "event_date",
+      cell: (row) => moment(row?.event_date).format("DD/MM/YYYY").toString(),
     },
     {
-      name: "Trình tự",
-      minWidth: "50px",
-      selector: (row) => row.sequence,
+      name: "Tg bắt đầu",
+      minWidth: "150px",
+      selector: (row) => row.start_time,
       sortable: true,
-      sortField: "sequence",
-      cell: (row) => row?.sequence,
+      sortField: "start_time",
+      cell: (row) => row?.start_time,
     },
     {
-      name: "Số ngày xử lý",
+      name: "Tg kết thúc",
       minWidth: "150px",
-      selector: (row) => row.limitdays,
+      selector: (row) => row.end_time,
       sortable: true,
-      sortField: "limitdays",
-      cell: (row) => row?.limitdays,
+      sortField: "end_time",
+      cell: (row) => row?.end_time,
+    },
+    {
+      name: "Địa điểm",
+      minWidth: "150px",
+      selector: (row) => row.location,
+      sortable: true,
+      sortField: "location",
+      cell: (row) => row?.location,
+    },
+    {
+      name: "Số lượng máu",
+      minWidth: "150px",
+      selector: (row) => row.blood_count,
+      sortable: true,
+      sortField: "blood_count",
+      cell: (row) => row?.blood_count,
+    },
+    {
+      name: "Nhóm máu",
+      minWidth: "150px",
+      selector: (row) => row.blood_type,
+      sortable: true,
+      sortField: "blood_type",
+      cell: (row) => row?.blood_type,
+    },
+    {
+      name: "Trạng thái",
+      width: "150px",
+      selector: (row) => row.status,
+      sortable: true,
+      sortField: "status",
+      cell: (row) => (
+        <Badge
+          className="text-capitalize"
+          color={statusObj[row?.status]?.bgr}
+          pill
+        >
+          {statusObj[row?.status]?.text}
+        </Badge>
+      ),
     },
     {
       name: "",
@@ -86,7 +119,7 @@ export default function Columns(userData, handleGetlist) {
           <div className="badge-container">
             {isAuthUpdate && row?.id && (
               <Badge color="primary" className="badge">
-                <Link to={`/apps/envent/edit/${row.id}`}>Cập nhật</Link>
+                <Link to={`/apps/envent/edit/${row.id}`}>Sửa</Link>
               </Badge>
             )}
             &nbsp;

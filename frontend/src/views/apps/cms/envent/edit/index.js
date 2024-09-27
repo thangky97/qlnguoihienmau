@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Alert } from "reactstrap";
 import EnventTab from "./Envent";
+import "./style.scss";
 
 const EnventEdit = () => {
   const { id } = useParams();

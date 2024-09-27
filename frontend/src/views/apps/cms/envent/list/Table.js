@@ -32,11 +32,11 @@ const CustomHeader = (props) => {
 
   const statusObj = {
     ACTIVE: {
-      text: "Đang hoạt động",
+      text: "Đã phê duyệt",
       bgr: "light-success",
     },
     DEACTIVE: {
-      text: "Ngừng hoạt động",
+      text: "Chờ phê duyệt",
       bgr: "light-danger",
     },
   };
@@ -342,11 +342,11 @@ const EnventList = () => {
                       classNamePrefix="select"
                       options={[
                         { value: null, label: "Chọn trạng thái", number: 0 },
-                        { value: "active", label: "Đang hoạt động", number: 2 },
+                        { value: "active", label: "Đã phê duyệt", number: 1 },
                         {
                           value: "deactive",
-                          label: "Ngừng hoạt động",
-                          number: 3,
+                          label: "Chờ phê duyệt",
+                          number: 2,
                         },
                       ]}
                       {...field}
@@ -462,11 +462,11 @@ const EnventList = () => {
                     classNamePrefix="select"
                     options={[
                       { value: null, label: "Chọn trạng thái", number: 0 },
-                      { value: "active", label: "Đang hoạt động", number: 2 },
+                      { value: "active", label: "Đã phê duyệt", number: 1 },
                       {
                         value: "deactive",
-                        label: "Ngừng hoạt động",
-                        number: 3,
+                        label: "Chờ phê duyệt",
+                        number: 2,
                       },
                     ]}
                     {...field}
