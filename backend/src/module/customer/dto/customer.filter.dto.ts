@@ -13,6 +13,8 @@ class FilterCustomer {
   @IsString()
   phone?: string;
   @IsString()
+  date_birthday: Date;
+  @IsString()
   status?: Status;
   @IsNumber()
   @IsOptional()

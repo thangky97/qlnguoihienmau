@@ -18,13 +18,30 @@ export class EnventController {
     private readonly logger: Logger,
   ) {}
 
+  // @UseGuards(AtGuard, RoleGuard)
+  // @CheckRole([Role.STAFF, Role.ADMIN])
+  // @Post('create')
+  // @HttpCode(HttpStatus.OK)
+  // async create(@Body() body: EnventDto) {
+  //   try {
+  //     return await this.enventService.create(body);
+  //   } catch (error) {
+  //     this.logger.error('url: envent/create - envent: ' + error?.envent + ' - response: ' + error?.response);
+  //     throw error.response;
+  //   }
+  // }
+
   @UseGuards(AtGuard, RoleGuard)
   @CheckRole([Role.STAFF, Role.ADMIN])
   @Post('create')
   @HttpCode(HttpStatus.OK)
   async create(@Body() body: EnventDto) {
     try {
-      return await this.enventService.create(body);
+      // user_id_array được lấy từ body, giờ đã được xác thực qua DTO
+      const user_id_array = body.user_id;
+
+      // Chuyển tiếp body và mảng user_id_array đến service
+      return await this.enventService.create(body, user_id_array);
     } catch (error) {
       this.logger.error('url: envent/create - envent: ' + error?.envent + ' - response: ' + error?.response);
       throw error.response;

@@ -68,4 +68,16 @@ export class NoteHistoryContractService {
       console.log(error);
     }
   }
+
+  async delete(id: number) {
+    try {
+      const result = await this.findOne({ where: { id: id } });
+      await this.noteHistoryContractRepository.delete({
+        id,
+      });
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

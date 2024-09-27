@@ -1,8 +1,10 @@
 import { Status } from '@config/enum';
 
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { Company } from '@module/company/entity/company.entity';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { User } from '@module/user/entity/user.entity';
+import { NoteHistoryContract } from '@module/note_history_contract/entity/note_history_contract.entity';
+import { Customer } from '@module/customer/entity/customer.entity';
+import { RegisterDonateBlood } from '@module/register_donate_blood/entity/register_donate_blood.entity';
 
 @Entity()
 export class Envent {
@@ -33,12 +35,25 @@ export class Envent {
   @Column({ type: 'varchar', nullable: true })
   blood_type: string;
 
-  @Column({ type: 'int', nullable: true })
-  user_id: number;
+  // @Column({ type: 'varchar', nullable: true })
+  // user_id: string;
 
-  @ManyToOne(() => User, (use) => use.envent)
-  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
-  user?: User;
+  // @ManyToOne(() => User, (user) => user.envent)
+  // @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+  // user?: User;
+
+  @Column({ type: 'int', nullable: true })
+  customer_id: number;
+
+  @ManyToOne(() => Customer, (customer) => customer.envent)
+  @JoinColumn({ name: 'customer_id', referencedColumnName: 'id' })
+  customer?: Customer;
+
+  @OneToMany(() => NoteHistoryContract, (noteHistory) => noteHistory.envent, { cascade: true })
+  noteHistory?: NoteHistoryContract[];
+
+  @OneToMany(() => RegisterDonateBlood, (register_donate_blood) => register_donate_blood.envent, { cascade: true })
+  register_donate_blood?: RegisterDonateBlood[];
 
   @Column({
     type: 'enum',

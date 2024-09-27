@@ -7,6 +7,7 @@ import { Department } from '@module/department/entity/department.entity';
 import { Contract } from '@module/contract/entity/contract.entity';
 import { Job } from '@module/job/entity/job.entity';
 import { Envent } from '@module/envent/entity/envent.entity';
+import { NoteHistoryContract } from '@module/note_history_contract/entity/note_history_contract.entity';
 
 @Entity()
 export class User {
@@ -108,8 +109,11 @@ export class User {
   @OneToMany(() => Contract, (contract) => contract.contractUser, { cascade: true })
   contractUser?: Contract[];
 
-  @OneToMany(() => Envent, (envent) => envent.user, { cascade: true })
-  envent?: Envent[];
+  // @OneToMany(() => Envent, (envent) => envent.user, { cascade: true })
+  // envent?: Envent[];
+
+  @OneToMany(() => NoteHistoryContract, (noteHistory) => noteHistory.user, { cascade: true })
+  noteHistory?: NoteHistoryContract[];
 
   @OneToMany(() => Job, (job) => job.userJob, { cascade: true })
   userJob?: Job[];

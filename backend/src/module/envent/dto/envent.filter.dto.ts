@@ -8,9 +8,6 @@ class FilterEnvent {
   status?: Status;
   @IsString()
   name?: string;
-  @IsNumber()
-  @IsOptional()
-  company_id: number;
 }
 
 export class EnventFilterDto {

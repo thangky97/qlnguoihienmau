@@ -66,4 +66,16 @@ export class NoteHistoryContractController {
       throw error.response;
     }
   }
+
+  @UseGuards(AtGuard)
+  @Post('delete/:id')
+  @HttpCode(HttpStatus.OK)
+  async delete(@Param('id') id: number) {
+    try {
+      return await this.noteHistoryContractService.delete(id);
+    } catch (error) {
+      this.logger.error('url: note_history_contract/delete - message: ' + error?.message + ' - response: ' + error?.response);
+      throw error.response;
+    }
+  }
 }

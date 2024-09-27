@@ -5,6 +5,8 @@ import { Branch } from '@module/branch/entity/branch.entity';
 import { Inquiry } from '@module/inquiry/entity/inquiry.entity';
 import { Contract } from '@module/contract/entity/contract.entity';
 import { NoteHistoryInquiry } from '@module/note_history_inquiry/entity/note_history_inquiry.entity';
+import { Envent } from '@module/envent/entity/envent.entity';
+import { RegisterDonateBlood } from '@module/register_donate_blood/entity/register_donate_blood.entity';
 
 @Entity()
 export class Customer {
@@ -84,8 +86,14 @@ export class Customer {
   @OneToMany(() => Inquiry, (inquiry) => inquiry.customer, { cascade: true })
   inquiry?: Inquiry[];
 
+  @OneToMany(() => Envent, (envent) => envent.customer, { cascade: true })
+  envent?: Envent[];
+
   @OneToMany(() => Contract, (contract) => contract.customer, { cascade: true })
   contract?: Contract[];
+
+  @OneToMany(() => RegisterDonateBlood, (register_donate_blood) => register_donate_blood.customer, { cascade: true })
+  register_donate_blood?: RegisterDonateBlood[];
 
   @Column({
     type: 'enum',
