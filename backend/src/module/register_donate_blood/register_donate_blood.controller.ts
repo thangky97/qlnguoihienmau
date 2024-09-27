@@ -19,7 +19,7 @@ export class RegisterDonateBloodController {
   ) {}
 
   @UseGuards(AtGuard, RoleGuard)
-  @CheckRole([Role.STAFF, Role.ADMIN, Role.DEPUTY, Role.VICPRESIDENT, Role.PRESIDENT, Role.MANAGER])
+  @CheckRole([Role.STAFF, Role.ADMIN])
   @Post('create')
   @HttpCode(HttpStatus.OK)
   async create(@Body() body: RegisterDonateBloodDto) {
@@ -32,7 +32,7 @@ export class RegisterDonateBloodController {
   }
 
   @UseGuards(AtGuard, RoleGuard)
-  @CheckRole([Role.STAFF, Role.ADMIN, Role.DEPUTY, Role.VICPRESIDENT, Role.PRESIDENT, Role.MANAGER])
+  @CheckRole([Role.STAFF, Role.ADMIN])
   @Post('find')
   @HttpCode(HttpStatus.OK)
   async find(@Body() body: RegisterDonateBloodFilterDto) {
@@ -46,7 +46,7 @@ export class RegisterDonateBloodController {
   }
 
   @UseGuards(AtGuard, RoleGuard)
-  @CheckRole([Role.STAFF, Role.ADMIN, Role.DEPUTY, Role.VICPRESIDENT, Role.PRESIDENT, Role.MANAGER])
+  @CheckRole([Role.STAFF, Role.ADMIN])
   @Get('get-detail/:id')
   @HttpCode(HttpStatus.OK)
   async getDetail(@Param('id') id: number) {
@@ -54,7 +54,7 @@ export class RegisterDonateBloodController {
   }
 
   @UseGuards(AtGuard, RoleGuard)
-  @CheckRole([Role.STAFF, Role.ADMIN, Role.DEPUTY, Role.VICPRESIDENT, Role.PRESIDENT, Role.MANAGER])
+  @CheckRole([Role.STAFF, Role.ADMIN])
   @Post('update/:id')
   @HttpCode(HttpStatus.OK)
   async update(@Body() body: RegisterDonateBloodUDDto, @Param('id') id: number) {

@@ -16,6 +16,7 @@ import { NoteHistoryContract } from '@module/note_history_contract/entity/note_h
 import { CategoryPost } from '@module/category_post/entity/category_post.entity';
 import { Envent } from '@module/envent/entity/envent.entity';
 import { RegisterDonateBlood } from '@module/register_donate_blood/entity/register_donate_blood.entity';
+import { Hospital } from '@module/hospital/entity/hospital.entity';
 
-const typeOrm = TypeOrmModule.forFeature([User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract, CategoryPost, Envent, RegisterDonateBlood]);
+const typeOrm = TypeOrmModule.forFeature([User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract, CategoryPost, Envent, RegisterDonateBlood, Hospital]);
 export default typeOrm;

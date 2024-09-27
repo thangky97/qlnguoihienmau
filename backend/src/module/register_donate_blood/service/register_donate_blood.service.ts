@@ -27,13 +27,24 @@ export class RegisterDonateBloodService {
   }
 
   async find(body: RegisterDonateBloodFilterDto) {
-    return await this.commonService.getTotalAndList({
-      tableName: 'registerDonateBlood',
-      body: {
-        ...body,
-        filter: {},
-      },
-    });
+    try {
+      return await this.commonService.getTotalAndList({
+        tableName: 'register_donate_blood',
+        body: {
+          ...body,
+          filter: {
+            status: body.filter.status,
+            // department_id: body?.filter?.department_id || undefined,
+          },
+        },
+        relations: {
+          customer: true,
+          envent: true,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findAll(@Query() query: RegisterDonateBloodQueryDto) {

@@ -3,16 +3,16 @@ import { PagingDto } from '@module/common/dto/paging.dto';
 import { SortingDto } from '@module/common/dto/sorting.dto';
 import { IsObject, IsString } from 'class-validator';
 
-class FilterRegisterDonateBlood {
+class FilterHospital {
   @IsString()
   status?: Status;
   @IsString()
   name?: string;
 }
 
-export class RegisterDonateBloodFilterDto {
+export class HospitalFilterDto {
   @IsObject()
-  filter: FilterRegisterDonateBlood;
+  filter: FilterHospital;
   @IsObject()
   sort: SortingDto;
   @IsObject()
