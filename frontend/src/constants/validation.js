@@ -553,3 +553,18 @@ export const SCHEMA_ADD_ENVENT = {
     )
     .min(1, "Phải chọn ít nhất một bác sĩ"), // Đảm bảo chọn ít nhất 1 bác sĩ
 };
+
+export const SCHEMA_HOSPITAL = {
+  name: yup.string().trim().required("Vui lòng nhập tên bệnh viện"),
+  phone: yup
+    .string()
+    .trim()
+    .required("Vui lòng nhập số điện thoại")
+    .matches(REGEX_PHONE, "Số điện thoại không hợp lệ"),
+  email: yup
+    .string()
+    .trim()
+    .required("Vui lòng nhập email")
+    .matches(REGEX_EMAIL, "Email không hợp lệ"),
+  address: yup.string().trim().required("Vui lòng nhập địa chỉ"),
+};

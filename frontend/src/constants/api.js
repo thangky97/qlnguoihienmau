@@ -544,3 +544,63 @@ export const DELETE_ENVENT = {
   path: "/envent/delete",
   method: "POST",
 };
+
+//người hiến máu
+export const GET_LIST_REGISTER_DONATE_BLOOD = {
+  path: "/register_donate_blood/find",
+  method: "POST",
+};
+
+export const GET_ALL_REGISTER_DONATE_BLOOD = {
+  path: "/register_donate_blood/find-all",
+  method: "GET",
+};
+
+export const CREATE_REGISTER_DONATE_BLOOD = {
+  path: "/register_donate_blood/create",
+  method: "POST",
+};
+export const UPDATE_REGISTER_DONATE_BLOOD = {
+  path: "/register_donate_blood/update",
+  method: "POST",
+};
+
+export const GET_DETAIL_REGISTER_DONATE_BLOOD = {
+  path: "/register_donate_blood/get-detail",
+  method: "GET",
+};
+
+export const DELETE_REGISTER_DONATE_BLOOD = {
+  path: "/register_donate_blood/delete",
+  method: "POST",
+};
+
+//bệnh viện
+export const GET_LIST_HOSPITAL = {
+  path: "/hospital/find",
+  method: "POST",
+};
+
+export const GET_ALL_HOSPITAL = {
+  path: "/hospital/find-all",
+  method: "GET",
+};
+
+export const CREATE_HOSPITAL = {
+  path: "/hospital/create",
+  method: "POST",
+};
+export const UPDATE_HOSPITAL = {
+  path: "/hospital/update",
+  method: "POST",
+};
+
+export const GET_DETAIL_HOSPITAL = {
+  path: "/hospital/get-detail",
+  method: "GET",
+};
+
+export const DELETE_HOSPITAL = {
+  path: "/hospital/delete",
+  method: "POST",
+};

@@ -14,6 +14,8 @@ import {
   User,
   AlignCenter,
   Archive,
+  Plus,
+  FolderPlus,
 } from "react-feather";
 import { ACTION, MANAGEMENT, ROLES_APP } from "../../constants/app";
 export default [
@@ -35,10 +37,26 @@ export default [
     action: ACTION.VIEW,
   },
   {
+    id: "list_event",
+    title: "Người đăng ký hiến máu",
+    icon: <Plus size={20} />,
+    navLink: "/apps/register_donate_blood/list",
+    role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+    action: ACTION.VIEW,
+  },
+  {
     id: "list_category",
     title: "Danh mục",
     icon: <AlignCenter size={20} />,
     navLink: "/apps/category-post/list",
+    role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+    action: ACTION.VIEW,
+  },
+  {
+    id: "hospital",
+    title: "Bệnh viện",
+    icon: <FolderPlus size={20} />,
+    navLink: "/apps/hospital/list",
     role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
     action: ACTION.VIEW,
   },

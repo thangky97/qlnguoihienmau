@@ -368,6 +368,64 @@ const AppRoutes = [
     management: MANAGEMENT.USER,
     action: ACTION.UPDATE,
   },
+
+  //register_donate_blood - người đăng ký hiến máu
+  {
+    path: "/apps/register_donate_blood/list",
+    component: lazy(() =>
+      import("../../views/apps/cms/register_donate_blood/list")
+    ),
+    management: MANAGEMENT.USER,
+    action: ACTION.VIEW,
+  },
+  {
+    path: "/apps/register_donate_blood/add",
+    component: lazy(() =>
+      import("../../views/apps/cms/register_donate_blood/add/index")
+    ),
+    meta: {
+      navLink: "/apps/register_donate_blood/add",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.CREATE,
+  },
+  {
+    path: "/apps/register_donate_blood/edit/:id",
+    component: lazy(() =>
+      import("../../views/apps/cms/register_donate_blood/edit")
+    ),
+    meta: {
+      navLink: "/apps/register_donate_blood/edit",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.UPDATE,
+  },
+
+  //bệnh viện
+  {
+    path: "/apps/hospital/list",
+    component: lazy(() => import("../../views/apps/cms/hospital/list")),
+    management: MANAGEMENT.USER,
+    action: ACTION.VIEW,
+  },
+  {
+    path: "/apps/hospital/add",
+    component: lazy(() => import("../../views/apps/cms/hospital/add/index")),
+    meta: {
+      navLink: "/apps/hospital/add",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.CREATE,
+  },
+  {
+    path: "/apps/hospital/edit/:id",
+    component: lazy(() => import("../../views/apps/cms/hospital/edit")),
+    meta: {
+      navLink: "/apps/hospital/edit",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.UPDATE,
+  },
 ];
 
 export default AppRoutes;
