@@ -1,6 +1,7 @@
 import { Status } from '@config/enum';
+import { Blood } from '@module/blood/entity/blood.entity';
 
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Hospital {
@@ -21,6 +22,9 @@ export class Hospital {
 
   @Column({ type: 'text' })
   description: string;
+
+  @OneToMany(() => Blood, (blood) => blood.hospital, { cascade: true })
+  blood?: Blood[];
 
   @Column({
     type: 'enum',

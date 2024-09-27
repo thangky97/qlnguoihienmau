@@ -61,6 +61,12 @@ import { RegisterDonateBloodModule } from '@module/register_donate_blood/registe
 import { Hospital } from '@module/hospital/entity/hospital.entity';
 import { HospitalModule } from '@module/hospital/hospital.module';
 
+import { Blood } from '@module/blood/entity/blood.entity';
+import { BloodModule } from '@module/blood/blood.module';
+
+import { BloodDetailModule } from '@module/blood_detail/blood_detail.module';
+import { BloodDetail } from '@module/blood_detail/entity/blood_detail.entity';
+
 @Module({
   imports: [
     WinstonModule.forRoot({
@@ -93,7 +99,7 @@ import { HospitalModule } from '@module/hospital/hospital.module';
           username: configService.get<string>('DB_USERNAME'),
           password: configService.get<string>('DB_PASSWORD'),
           database: configService.get<string>('DB_DATABASE'),
-          entities: [User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract, CategoryPost, Envent, RegisterDonateBlood, Hospital],
+          entities: [User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract, CategoryPost, Envent, RegisterDonateBlood, Hospital, Blood, BloodDetail],
           // logging:true,
           synchronize: true,
         };
@@ -118,6 +124,8 @@ import { HospitalModule } from '@module/hospital/hospital.module';
     EnventModule,
     RegisterDonateBloodModule,
     HospitalModule,
+    BloodModule,
+    BloodDetailModule,
   ],
   controllers: [AppController],
   providers: [
