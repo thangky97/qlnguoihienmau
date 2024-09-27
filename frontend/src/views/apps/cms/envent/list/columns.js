@@ -113,7 +113,7 @@ export default function Columns(userData, handleGetlist) {
     },
     {
       name: "",
-      minWidth: "150px",
+      minWidth: "180px",
       cell: (row) => {
         return (
           <div className="badge-container">

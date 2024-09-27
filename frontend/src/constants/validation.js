@@ -568,3 +568,49 @@ export const SCHEMA_HOSPITAL = {
     .matches(REGEX_EMAIL, "Email không hợp lệ"),
   address: yup.string().trim().required("Vui lòng nhập địa chỉ"),
 };
+
+export const SCHEMA_ADD_BLOOD = {
+  transactionCodes: yup
+    .string()
+    .trim()
+    .required("Vui lòng nhập mã giao dịch")
+    .matches(REGEX_NOT_SPACE, "Mã giao dịch không hợp lệ"),
+  hospital_id: yup.object().required("Vui lòng chọn bệnh viện"),
+  addDate: yup.string().required("Vui lòng nhập ngày nhập").nullable(),
+  items: yup.array().of(
+    yup.object().shape({
+      bloodName: yup.object().required("Vui lòng chọn nhóm máu"),
+      qty: yup
+        .number()
+        .transform((value, originalValue) => {
+          return originalValue === "" ? undefined : value; // Chuyển chuỗi rỗng thành `undefined`
+        })
+        .required("Vui lòng nhập số lượng máu")
+        .positive("Số lượng máu phải là số dương")
+        .integer("Số lượng máu phải là số nguyên"),
+    })
+  ),
+};
+
+export const SCHEMA_ADD_MATERIAL_TRANSACTION_DETAIL = {
+  transactionCodes: yup
+    .string()
+    .trim()
+    .required("Vui lòng nhập mã giao dịch")
+    .matches(REGEX_NOT_SPACE, "Mã giao dịch không hợp lệ"),
+  material_warehouse: yup.object().required("Vui lòng chọn kho vật tư"),
+  tour: yup.object().required("Vui lòng chọn tour"),
+  addDate: yup.string().required("Vui lòng nhập ngày nhập").nullable(),
+  items: yup.array().of(
+    yup.object().shape({
+      materialCode: yup.object().required("Vui lòng chọn mã vật tư"),
+      materialName: yup.string(),
+      qty: yup
+        .number()
+        .positive("Số lượng phải là số dương")
+        .integer("Số lượng phải là số nguyên"),
+      unit: yup.string(),
+    })
+  ),
+  status: yup.object().required("Vui lòng nhập trạng thái"),
+};

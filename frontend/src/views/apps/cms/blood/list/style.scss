@@ -1,0 +1,18 @@
+.table-list-warehouse-operation {
+  .rdt_TableRow {
+    padding: 0.5rem 1.5rem 0.5rem 0rem !important;
+  }
+
+  .sc-fzpjYC {
+    .warehouse {
+      font-family: Montserrat, Helvetica, Arial, serif !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  .warehouse {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

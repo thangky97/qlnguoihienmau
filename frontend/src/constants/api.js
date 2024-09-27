@@ -604,3 +604,45 @@ export const DELETE_HOSPITAL = {
   path: "/hospital/delete",
   method: "POST",
 };
+
+// blood - máu
+export const GET_BLOOD_DETAIL = {
+  path: "/blood/detail/get-detail",
+  method: "GET",
+};
+export const UPDATE_BLOOD_DETAIL = {
+  path: "/blood/detail/update",
+  method: "POST",
+};
+
+export const LIST_BLOOD_DETAIL = {
+  path: "/blood/detail/find",
+  method: "POST",
+};
+export const ADD_BLOOD_DETAIL = {
+  path: "/blood/detail/create",
+  method: "POST",
+};
+
+export const DELETE_BLOOD_DETAIL = {
+  path: "/blood/detail/delete",
+  method: "POST",
+};
+
+//blood detail - chi tiết máu
+export const GET_BLOOD = {
+  path: "/blood/get-detail",
+  method: "GET",
+};
+export const UPDATE_BLOOD = {
+  path: "/blood/update",
+  method: "POST",
+};
+export const LIST_BLOOD = {
+  path: "/blood/find",
+  method: "POST",
+};
+export const ADD_BLOOD = {
+  path: "/blood/create",
+  method: "POST",
+};

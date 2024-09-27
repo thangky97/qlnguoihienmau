@@ -114,7 +114,7 @@ const CustomHeader = (props) => {
       {isAuthCreate && (
         <Link to="/apps/user/add">
           <Button color="dark" outline tag={Label} size="md">
-            <span className="align-middle ms-25">Tạo cán bộ</span>
+            <span className="align-middle ms-25">Tạo nhân viên</span>
           </Button>
         </Link>
       )}

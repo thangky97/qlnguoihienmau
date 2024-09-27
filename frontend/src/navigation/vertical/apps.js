@@ -16,6 +16,7 @@ import {
   Archive,
   Plus,
   FolderPlus,
+  Heart,
 } from "react-feather";
 import { ACTION, MANAGEMENT, ROLES_APP } from "../../constants/app";
 export default [
@@ -25,7 +26,16 @@ export default [
     icon: <PieChart size={20} />,
     navLink: "/apps/cms/pos",
     // default: true,
-    defaultGroup: [MANAGEMENT.REPORT],
+    // defaultGroup: [MANAGEMENT.REPORT],
+    role: [ROLES_APP.ADMIN],
+    action: ACTION.VIEW,
+  },
+  {
+    id: "blood",
+    title: "Nhập - Xuất Máu",
+    icon: <Heart size={20} />,
+    navLink: "/apps/blood/list",
+    role: [ROLES_APP.ADMIN],
     action: ACTION.VIEW,
   },
   {
@@ -57,7 +67,7 @@ export default [
     title: "Bệnh viện",
     icon: <FolderPlus size={20} />,
     navLink: "/apps/hospital/list",
-    role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+    role: [ROLES_APP.ADMIN],
     action: ACTION.VIEW,
   },
   // {
@@ -120,7 +130,7 @@ export default [
     title: "Nhân viên",
     icon: <User size={20} />,
     navLink: "/apps/user/list",
-    role: [ROLES_APP.ADMIN, ROLES_APP.STAFF],
+    role: [ROLES_APP.ADMIN],
     action: ACTION.VIEW,
   },
 

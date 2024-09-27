@@ -426,6 +426,48 @@ const AppRoutes = [
     management: MANAGEMENT.USER,
     action: ACTION.UPDATE,
   },
+
+  //nhập - xuất máu
+  {
+    path: "/apps/blood/list",
+    component: lazy(() => import("../../views/apps/cms/blood/list/index")),
+    management: MANAGEMENT.USER,
+    action: ACTION.VIEW,
+  },
+
+  {
+    path: "/apps/blood/edit/:code",
+    component: lazy(() => import("../../views/apps/cms/blood/edit/index")),
+    meta: {
+      navLink: "/apps/blood/edit/",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.UPDATE,
+  },
+
+  {
+    path: "/apps/blood/add_blood_in",
+    component: lazy(() =>
+      import("../../views/apps/cms/blood/add_blood_in/index")
+    ),
+    meta: {
+      navLink: "/apps/blood/add_blood_in",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.CREATE,
+  },
+
+  {
+    path: "/apps/blood/add_blood_out",
+    component: lazy(() =>
+      import("../../views/apps/cms/blood/add_blood_out/index")
+    ),
+    meta: {
+      navLink: "/apps/blood/add_blood_out",
+    },
+    management: MANAGEMENT.USER,
+    action: ACTION.CREATE,
+  },
 ];
 
 export default AppRoutes;

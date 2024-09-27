@@ -213,3 +213,17 @@ export const exportHeaderMyJob = {
   DESCRIPTION: "Mô tả",
   WORKSTATUS: "Trạng thái xử lý",
 };
+
+export const exportHeaderBlood = {
+  EXPORT_TITLE: "DANH SÁCH NHẬP XUẤT MÁU", //tiêu đề của sheet
+  EXPORT_WB: "Blood.xlsx", //tên file excel
+  EXPORT_WS: "Blood", //tên sheet
+
+  TRANSACTIONCODE: "Mã giao dịch",
+  TRANSACTIONDATE: "Ngày giao dịch",
+  BLOODTYPE: "Loại giao dịch",
+  BLOODNAME: "Nhóm máu",
+  QTY: "Số lượng máu(ml)",
+  HOSPITAL: "Bệnh viện",
+  STATUS: "Trạng thái",
+};
