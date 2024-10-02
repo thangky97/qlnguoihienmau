@@ -1,0 +1,99 @@
+.edit-intersection-container {
+  .ant-select {
+    width: 100%;
+    .ant-select-selector {
+      height: 100%;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      background: #ffffff !important;
+      border-radius: 4px 0px 0px 4px !important;
+      width: 100% !important;
+      border-radius: 4px !important;
+  
+      .ant-select-selection-item {
+        display: flex;
+        justify-content: center;
+        
+        align-items: center;
+      }
+  
+      .ant-select-selection-search {
+        input {
+          width: 100%;
+          padding: 11px;
+          background: #252731;
+          border-radius: 4px;
+        
+          &::-webkit-input-placeholder {
+            
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #8E8E8E !important;
+          }
+        
+          &::-moz-placeholder {
+            
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #8E8E8E !important;
+          }
+        
+          &:-ms-input-placeholder {
+            
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #8E8E8E !important;
+          }
+        
+          &::-ms-input-placeholder {
+            
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #8E8E8E !important;
+          }
+        
+          &::placeholder {
+            
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #8E8E8E !important;
+          }
+        
+          &.rounded-none {
+            border-radius: 0;
+          }
+        }
+      }
+  
+      .ant-select-selection-placeholder {
+        display: flex;
+        align-items: center;
+        
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #8E8E8E;
+      }
+    }
+  }
+
+  div.label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #DEDEDE;
+    margin-bottom: 10px;
+  }
+}

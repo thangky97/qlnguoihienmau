@@ -1,0 +1,28 @@
+.c2i-input-search {
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  &-perfix {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    transform: translateY(43%);
+
+    .anticon.anticon-search {
+      svg {
+        fill: #777984;
+        height: 24px;
+        width: 24px;
+      }
+    }
+  }
+
+  .c2i-input {
+    padding-left: 48px;
+    
+    &:focus {
+      padding-left: 48px !important;
+    }
+  }
+}

@@ -1,0 +1,125 @@
+.register-title {
+  width: 100%;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 44px;
+  // color: #FFFFFF;
+  padding-bottom: 30px;
+}
+
+.register-detail {
+  .user-register {
+    .label-register {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      // color: #DEDEDE;
+    }
+  }
+
+  .infor-register {
+    height: 38px;
+    width: 99%;
+    left: 1111px;
+    top: 474px;
+    right: 382px;
+    padding-left: 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #252525;
+    margin-top: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .button-register {
+    height: 42px;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .note {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    color: #8e8e8e;
+
+    .next {
+      color: #5cc6f8;
+    }
+
+    .transaction {
+      color: #5cc6f8;
+      text-transform: capitalize;
+    }
+  }
+}
+#setup-information {
+  .ant-select-selector {
+    border-radius: 4px !important;
+    border: 1px solid !important;
+  }
+  .ant-select-dropdown {
+    background: #fff;
+    .ant-select-item.ant-select-item-option.ant-select-item-option-active.ant-select-item-option-selected {
+      background: #fff !important;
+    }
+    .ant-select-item.ant-select-item-option.ant-select-item-option-selected {
+      background: #fff !important;
+    }
+    .ant-select-item.ant-select-item-option.ant-select-item-option-active {
+      background: #fff !important;
+    }
+    .ant-select-item {
+      &:hover {
+        background: #fff !important;
+      }
+    }
+  }
+}
+
+.note {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  color: #8e8e8e;
+
+  .next {
+    color: #5cc6f8;
+  }
+
+  .transaction {
+    color: #5cc6f8;
+    text-transform: capitalize;
+  }
+}
+
+@media (max-width: 768px) {
+  #setup-information {
+    .user-setup {
+      .name {
+        font-size: 16px !important;
+      }
+    }
+  }
+  #register-password {
+    .pass-new label {
+      font-size: 16px;
+    }
+    .pass-confirm label {
+      font-size: 16px;
+    }
+  }
+}

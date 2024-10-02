@@ -1,0 +1,29 @@
+.ant-picker-range {
+  background: #252731;
+  border-radius: 4px;
+  padding: 9px 8px;
+  border: none;
+  
+  &.ant-picker-focused {
+    border: none;
+    outline: none;
+  }
+
+  .ant-picker-input {
+    input {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      color: #8E8E8E;
+
+      &::placeholder {    
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #8E8E8E;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+// .ant-table {
+//   padding: 0px 20px 0px 20px;
+//   .ant-table-container {
+//     .ant-table-content {
+//       .ant-table-thead {
+//         & > tr {
+//           & > th {
+//             background-color: #252731;
+//             font-style: normal;
+//             font-weight: 400;
+//             font-size: 14px;
+//             line-height: 150%;
+//             color: #dedede;
+//             border: none;
+//             outline: none;
+//           }
+//         }
+//       }
+//       .ant-table-tbody {
+//         & > tr {
+//           td {
+//             background-color: #13151c;
+//             border: none;
+//             outline: none;
+//           }
+//           &.offline {
+//             & > td {
+//               background-color: #361618 !important;
+//             }
+//           }
+//         }
+
+//         .ant-table-row {
+//           .ant-table-cell {
+//             &.ant-table-cell-row-hover {
+//               background-color: #1d1f28;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .my-service {
+//   .ant-table {
+//     .ant-table-container {
+//       .ant-table-content {
+//         .ant-table-tbody {
+//           tr {
+//             td {
+//               background-color: #fff !important;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

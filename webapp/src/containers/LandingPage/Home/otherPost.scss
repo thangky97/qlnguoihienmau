@@ -1,0 +1,62 @@
+.otherPost {
+  text-align: center;
+  font-weight: 700;
+  font-size: 35px;
+  padding-bottom: 15px;
+  color: black;
+}
+
+.content-content-item {
+  background: white;
+  border: white;
+}
+
+.content-content-item .description {
+  color: black;
+}
+
+.content-content-item .title {
+  color: black;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.content-content-item .button * {
+  color: #037ddc;
+}
+.custom-form {
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  font-size: 16px;
+}
+.custom-input {
+  border-radius: 8px;
+  // border: 1px solid #ccc;
+  padding: 8px;
+}
+.btn-whites {
+  display: flex;
+  align-items: center;
+  border: 1px solid #037ddc;
+
+  background: none;
+  border-radius: 4px;
+  padding: 9px 41px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  margin-top: auto;
+  width: fit-content;
+  span {
+    color: #037ddc !important;
+  }
+  &:hover {
+    background: #037ddc;
+    border-color: #037ddc;
+  }
+  &:hover span {
+    color: rgb(246, 241, 241) !important;
+  }
+  
+}

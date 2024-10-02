@@ -1,0 +1,83 @@
+.forgot-title {
+  width: 100%;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 44px;
+  text-align: center;
+  color: #252525;
+  padding-bottom: 30px;
+}
+
+.forgot-detail {
+  .user-forgot {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #dedede;
+  }
+
+  .infor-forgot {
+    height: 38px;
+    width: 99%;
+    left: 1111px;
+    top: 474px;
+    right: 382px;
+    background-color: #ffffff;
+    padding-left: 20px;
+    border: 1px solid grey;
+    border-radius: 4px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #252525;
+    margin-top: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .button-forgot {
+    height: 42px;
+    width: 100%;
+    margin-top: 20px;
+
+    .button-next {
+      width: 100%;
+      padding-top: 11px;
+      padding-bottom: 8px;
+      border-radius: 6px;
+      background: #3888ff;
+    }
+  }
+
+  .forgot-note {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    color: #252525;
+
+    .create-acc {
+      color: #5cc6f8;
+      text-decoration: underline 1.3px gray;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+    .forgot-title {
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .user-forgot label {
+        font-size: 16px;
+    }
+}

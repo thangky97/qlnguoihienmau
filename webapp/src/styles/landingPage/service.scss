@@ -1,0 +1,45 @@
+.service-bg {
+  // background: radial-gradient(
+  //   50% 50% at 50% 50%,
+  //   #080a13 0%,
+  //   #152b4d 0.01%,
+  //   #0e1121 100%
+  // );
+  border-radius: 4px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+
+  .name {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 150%;
+    color: #212020;
+  }
+
+  .description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #272525;
+  }
+
+  & > ul {
+    padding-top: 20px;
+    list-style-image: none;
+    li {
+      display: flex;
+      margin-bottom: 12px;
+      gap: 6px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+      color: #272525;
+    }
+  }
+
+
+}

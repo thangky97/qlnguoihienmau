@@ -1,0 +1,37 @@
+.custom-checkbox-group {
+  padding: 18px;
+  background: #252731;
+  border-radius: 4px;
+  height: auto;
+  .ant-row.ant-form-item {
+    margin-bottom: 0;
+  }
+
+  .ant-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    .ant-checkbox-wrapper {
+      gap: 4px;
+
+      &:not(.ant-checkbox-wrapper-checked) {
+        .ant-checkbox {
+          .ant-checkbox-inner {
+            background-color: transparent;
+            border: 2px solid #777984 !important;
+            outline: none;
+          }
+        }
+      }
+
+      span {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #DEDEDE;
+      }
+    }
+  }
+}

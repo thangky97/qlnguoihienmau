@@ -1,0 +1,19 @@
+@media screen and (max-width: 992.5px) {
+  .wrapper {
+    position: relative;
+    .sider {
+      width: 280px;
+      overflow-x: hidden;
+      position: fixed;
+      top: 0;
+      left: -300px;
+      transition: left 0.5s;
+      box-shadow: 0 10px 10px gray;
+      z-index: 2;
+    }
+    .sider.active {
+      left: 0;
+      width: 280px;
+    }
+  }
+}

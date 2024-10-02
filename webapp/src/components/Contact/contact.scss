@@ -1,0 +1,95 @@
+.contact{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .item{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .zalo,.facebook,.hote{
+        background: #ffffff;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        a{
+            color: #fff;
+            text-decoration: none;
+        }
+        &:hover{
+            opacity: 0.9;
+        }
+    }
+
+    .icon-cart{
+        padding: 8px;
+        background: #037ddc;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        position: relative;
+        a{
+            color: red;
+            span{
+                svg{
+                    fill: #fff;
+                    font-size: 27px;
+                }
+            }
+        }
+    }
+
+    .icon-contact{
+        padding: 8px;
+        background: #037ddc;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        a{
+            svg{
+                width: 24px;
+                height: 24px;
+                transform: translateX(4px);
+            }
+        }
+    }
+    .facebook{
+        a{
+            svg{
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+    }    
+}
+
+.icon_Cart {
+    position: fixed;
+    /* left: 10px; */
+    right: 27px;
+    bottom: 212px;
+    // border: 1px solid white;
+    background: rgb(3, 122, 220);
+    border-radius: 50%;
+    padding: 5px;
+    margin: 0px;
+    svg {
+        fill: #fff;
+        font-size: 31px;
+    }
+}
+
+
+@media screen and (max-width: 567px) {
+    .contact{
+        bottom: 15px;
+        right: 15px;
+    }
+    .icon_Cart {
+        right: 15px;
+        bottom: 212px;
+    }
+
+}

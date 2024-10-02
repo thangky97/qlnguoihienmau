@@ -1,0 +1,64 @@
+.content {
+  &-container {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+
+  &-content {
+    gap: 20px;
+    &-item {
+      background: #252731;
+      border: 1px solid #000000;
+      padding: 25px;
+  
+      .title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        color: #FFFFFF;
+        margin-bottom: 15px;
+      }
+  
+      .description {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: #818181;
+        margin-bottom: 45px;
+      }
+
+      .button {
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        gap: 14px;
+        * {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 150%;
+          /* identical to box height, or 24px */
+    
+    
+          /* link */
+    
+          color: #5CC6F8;
+        }
+  }
+
+    }
+  }
+}

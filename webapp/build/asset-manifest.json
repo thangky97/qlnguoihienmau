@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/css/main.css",
+    "main.js": "/js/main.js",
+    "static/media/support-img.svg": "/static/media/support-img.e76191979d095df8e157.svg",
+    "static/media/google.svg": "/static/media/google.2ce09f3f204ea5747b866b486487500b.svg",
+    "static/media/logo1.png": "/static/media/logo1.6d1220a4bce6b17afcd0.png",
+    "static/media/defaultAvt.png": "/static/media/defaultAvt.a1158b938d4f9c73d102.png",
+    "static/media/empty.png": "/static/media/empty.a60759ad1dabe909c46a.png",
+    "static/media/zalo-icon.svg": "/static/media/zalo-icon.90b55c88f29edef4cfa1b70f2faca8c0.svg",
+    "static/media/contact.svg": "/static/media/contact.4c1f1fb25a7281050eec060dcc0cd545.svg",
+    "static/media/phone.svg": "/static/media/phone.bf0e2fe0eb172315a5bbfff6a58d5755.svg",
+    "index.html": "/index.html",
+    "static/media/ico-ig.svg": "/static/media/ico-ig.842407384bba8ebc036b81a1a7ab7bb3.svg",
+    "static/media/ico-youtube.svg": "/static/media/ico-youtube.e99c769495067927fd3f3510a18b5223.svg",
+    "static/media/facebook_rounded.svg": "/static/media/facebook_rounded.9758eb4414a5fc062f43fb9fe9980b83.svg",
+    "static/media/blue_tick.svg": "/static/media/blue_tick.55f21f8c9bfb985a97642818f2b0d67c.svg",
+    "static/media/right-arrow.svg": "/static/media/right-arrow.5e80243028b2590d33d3b33d2b6879ab.svg"
+  },
+  "entrypoints": [
+    "css/main.css",
+    "js/main.js"
+  ]
+}

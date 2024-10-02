@@ -1,0 +1,42 @@
+.ant-pagination {
+  display: flex;
+  .ant-pagination-prev, .ant-pagination-next {
+    .ant-pagination-item-link {
+      background-color: transparent !important;
+      border: none;
+      outline: none;
+
+      svg {
+        fill: #8E8E8E;
+      }
+    }
+  }
+
+  .ant-pagination-item {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #8E8E8E;
+      background-color: transparent !important;
+    }
+
+
+    &.ant-pagination-item-active {
+      background: #037ddc;
+      border-radius: 4px;
+      
+      a {
+        color: #fff;  
+      }
+    }
+  }
+}

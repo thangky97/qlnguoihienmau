@@ -1,0 +1,137 @@
+.setup-title {
+  width: 100%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 44px;
+  //color: #FFFFFF;
+  padding-bottom: 28px;
+}
+
+.setup-detail {
+  .user-setup {
+    .name {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+    }
+
+    .setup-infor {
+      height: 38px;
+      width: 99%;
+      left: 1111px;
+      top: 474px;
+      right: 382px;
+      padding-left: 20px;
+      border-radius: 4px;
+      border: 1px solid black;
+
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #252525;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .setup-label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .ant-select-selector {
+    height: 38px !important;
+    width: 100% !important;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background: #ffffff !important;
+    border-radius: 4px 0px 0px 4px !important;
+
+    .ant-select-selection-item {
+      display: flex !important;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .ant-select-selection-search {
+      input {
+        width: 100%;
+        padding: 11px;
+        background: #f1f2f6;
+        border-radius: 4px;
+
+        &::-webkit-input-placeholder {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #8e8e8e !important;
+        }
+
+        &::-moz-placeholder {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #8e8e8e !important;
+        }
+
+        &:-ms-input-placeholder {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #8e8e8e !important;
+        }
+
+        &::-ms-input-placeholder {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #8e8e8e !important;
+        }
+
+        &::placeholder {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #8e8e8e !important;
+        }
+
+        &.rounded-none {
+          border-radius: 0;
+        }
+      }
+    }
+
+    .ant-select-selection-placeholder {
+      display: flex;
+      align-items: center;
+
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #8e8e8e;
+    }
+  }
+
+  .button-setup {
+    height: 42px;
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+.ant-select-item-option-content {
+  color: #252525;
+  .a {
+    color: #000000;
+  }
+}

@@ -1,0 +1,27 @@
+.service-container {
+  background: linear-gradient(90deg, #080A13 59.24%, rgba(8, 10, 19, 0.71) 100%);
+  .list-description {
+    list-style: none;
+
+    &>li {
+      display: flex;
+      align-items: center;
+      
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      gap: 10px;
+      color: #DEDEDE;
+      
+      &::before {
+        content: "\2022";
+        color: #fff;
+        font-weight: bold;
+        display: inline-block; 
+        width: 1em;
+        margin-left: -1em;
+      }
+    }
+  }
+}

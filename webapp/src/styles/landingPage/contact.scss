@@ -1,0 +1,44 @@
+.contact-conatainer {
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+    text-transform: uppercase;
+    color: #1e1e1e;
+  }
+
+  .hint {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    color: #037ddc;
+  }
+
+  .information {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    /* or 21px */
+
+
+    /* text-1 */
+
+    color: #1d1c1c;
+  }
+
+  .content-left {
+    iframe {
+      width: 100%;
+      aspect-ratio: 5/3;
+    }
+  }
+}
