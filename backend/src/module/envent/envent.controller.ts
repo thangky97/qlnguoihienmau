@@ -56,6 +56,12 @@ export class EnventController {
     return await this.enventService.find(body);
   }
 
+  @Post('find-user')
+  @HttpCode(HttpStatus.OK)
+  async findUser(@Body() body: EnventFilterDto) {
+    return await this.enventService.findUser(body);
+  }
+
   @Get('find-all')
   @HttpCode(HttpStatus.OK)
   async findAll(@Query() query: any) {
@@ -68,6 +74,12 @@ export class EnventController {
   @HttpCode(HttpStatus.OK)
   async getDetail(@Param('id') id: number) {
     return await this.enventService.getDetail(id);
+  }
+
+  @Get('get-detail-user/:id')
+  @HttpCode(HttpStatus.OK)
+  async getDetailUser(@Param('id') id: number) {
+    return await this.enventService.getDetailUser(id);
   }
 
   @UseGuards(AtGuard, RoleGuard)

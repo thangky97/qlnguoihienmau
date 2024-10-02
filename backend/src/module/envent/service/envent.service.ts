@@ -76,6 +76,24 @@ export class EnventService {
     });
   }
 
+  async findUser(body: EnventFilterDto) {
+    return await this.commonService.getTotalAndList({
+      tableName: 'envent',
+      body: {
+        ...body,
+        filter: {
+          // status: body.filter.status,
+          // department_id: body?.filter?.department_id || undefined,
+        },
+      },
+      relations: {
+        noteHistory: {
+          user: true,
+        },
+      },
+    });
+  }
+
   async findAll(query) {
     return await this.enventRepository.find({
       where: {
@@ -94,6 +112,22 @@ export class EnventService {
   }
 
   async getDetail(id: number) {
+    try {
+      const data = await this.findOne({
+        where: { id: id },
+        relations: {
+          noteHistory: {
+            user: true,
+          },
+        },
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getDetailUser(id: number) {
     try {
       const data = await this.findOne({
         where: { id: id },
