@@ -20,16 +20,14 @@ import {
 } from "react-feather";
 import { ACTION, MANAGEMENT, ROLES_APP } from "../../constants/app";
 export default [
-  {
-    id: "dashboard",
-    title: "Tổng quan",
-    icon: <PieChart size={20} />,
-    navLink: "/apps/cms/pos",
-    // default: true,
-    // defaultGroup: [MANAGEMENT.REPORT],
-    role: [ROLES_APP.ADMIN],
-    action: ACTION.VIEW,
-  },
+  // {
+  //   id: "dashboard",
+  //   title: "Tổng quan",
+  //   icon: <PieChart size={20} />,
+  //   navLink: "/apps/cms/pos",
+  //   role: [ROLES_APP.ADMIN],
+  //   action: ACTION.VIEW,
+  // },
   {
     id: "blood",
     title: "Nhập - Xuất Máu",
