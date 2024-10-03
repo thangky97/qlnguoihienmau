@@ -64,14 +64,15 @@ export class EnventService {
       body: {
         ...body,
         filter: {
-          // status: body.filter.status,
-          // department_id: body?.filter?.department_id || undefined,
+          status: body.filter.status,
+          category_post_id: body?.filter?.category_post_id || undefined,
         },
       },
       relations: {
         noteHistory: {
           user: true,
         },
+        categoryPost: true,
       },
     });
   }
@@ -90,6 +91,7 @@ export class EnventService {
         noteHistory: {
           user: true,
         },
+        categoryPost: true,
       },
     });
   }
@@ -104,6 +106,7 @@ export class EnventService {
         noteHistory: {
           user: true,
         },
+        categoryPost: true,
       },
       order: {
         // sequence: 'ASC',
@@ -119,6 +122,7 @@ export class EnventService {
           noteHistory: {
             user: true,
           },
+          categoryPost: true,
         },
       });
       return data;
@@ -135,6 +139,7 @@ export class EnventService {
           noteHistory: {
             user: true,
           },
+          categoryPost: true,
         },
       });
       return data;

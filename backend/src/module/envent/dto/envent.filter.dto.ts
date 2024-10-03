@@ -8,6 +8,8 @@ class FilterEnvent {
   status?: Status;
   @IsString()
   name?: string;
+  @IsNumber()
+  category_post_id?: number;
 }
 
 export class EnventFilterDto {

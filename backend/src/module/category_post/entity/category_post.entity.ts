@@ -1,6 +1,7 @@
 import { Status } from '@config/enum';
+import { Envent } from '@module/envent/entity/envent.entity';
 
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class CategoryPost {
@@ -19,6 +20,9 @@ export class CategoryPost {
     default: Status.ACTIVE,
   })
   status?: Status;
+
+  @OneToMany(() => Envent, (envent) => envent.categoryPost, { cascade: true })
+  envent?: Envent[];
 
   @CreateDateColumn()
   created_at?: Date;

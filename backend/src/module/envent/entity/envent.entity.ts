@@ -5,6 +5,7 @@ import { User } from '@module/user/entity/user.entity';
 import { NoteHistoryContract } from '@module/note_history_contract/entity/note_history_contract.entity';
 import { Customer } from '@module/customer/entity/customer.entity';
 import { RegisterDonateBlood } from '@module/register_donate_blood/entity/register_donate_blood.entity';
+import { CategoryPost } from '@module/category_post/entity/category_post.entity';
 
 @Entity()
 export class Envent {
@@ -43,11 +44,18 @@ export class Envent {
   // user?: User;
 
   @Column({ type: 'int', nullable: true })
+  category_post_id: number;
+
+  @Column({ type: 'int', nullable: true })
   customer_id: number;
 
   @ManyToOne(() => Customer, (customer) => customer.envent)
   @JoinColumn({ name: 'customer_id', referencedColumnName: 'id' })
   customer?: Customer;
+
+  @ManyToOne(() => CategoryPost, (categoryPost) => categoryPost.envent)
+  @JoinColumn({ name: 'category_post_id', referencedColumnName: 'id' })
+  categoryPost?: Customer;
 
   @OneToMany(() => NoteHistoryContract, (noteHistory) => noteHistory.envent, { cascade: true })
   noteHistory?: NoteHistoryContract[];
