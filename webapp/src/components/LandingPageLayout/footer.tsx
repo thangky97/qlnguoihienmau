@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 // import FacebookRounded from '@Assets/icons/facebook_rounded.svg';
 import { useAppSelector } from "@Store/hooks";
 import { useTranslation } from "react-i18next";
-import img from "./../../../src/assets/images/logo.jpg";
+import img from "../../../src/assets/images/13.png";
 
 const { onRedirect } = Helper;
 
@@ -36,7 +36,7 @@ const Footer: React.FC<{}> = () => {
     <div className="landing-footer">
       <div className="w-full grid">
         <div className="w-full bg-white 2xl:pl-[110px] 2xl:pt-[45px] wapper-logo">
-          <img src={app.logo} alt="logo" className="logo md:max-w-[300px]" />
+          <img src={img} alt="logo" className="logo md:max-w-[300px]" />
           <div
             style={{ whiteSpace: "pre-wrap" }}
             className="text-white text-base mb-[45px] pt-[15px] w-80 text-footer"

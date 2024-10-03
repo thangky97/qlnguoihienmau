@@ -13,6 +13,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
 import cartActions from "@Store/actions/cartActions";
 import { ROUTES } from "@Constants/route";
+import img from "../../../src/assets/images/13.png";
 const { onRedirect } = Helper;
 
 const menuAccount = (
@@ -126,14 +127,19 @@ function Header() {
         className="md:px-10 flex justify-between items-center w-full flex-row "
       >
         <div className="header__logo">
-          <img
+          {/* <img
             src={app.logo}
             alt="logo"
             style={{ maxWidth: 100 }}
             onClick={() => navigate("/")}
-          />
+          /> */}
 
-          {/* <img src={img} alt="logo" style={{ maxWidth: 220 }} /> */}
+          <img
+            src={img}
+            alt="logo"
+            style={{ maxWidth: 100 }}
+            onClick={() => navigate("/")}
+          />
         </div>
         <div className="flex justify-center mr-[65px]">
           {LIST_LANDING_HEADER.map((item: any) => {

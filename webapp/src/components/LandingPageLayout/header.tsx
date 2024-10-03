@@ -19,6 +19,7 @@ import CategoryService from "@Network/categoryService";
 import { error } from "console";
 import LandingService from "@Network/landingService";
 import appActions from "@Store/actions/appActions";
+import img from "../../../src/assets/images/13.png";
 
 const { onRedirect } = Helper;
 
@@ -197,14 +198,19 @@ function Header() {
         className="md:px-10 flex justify-between items-center w-full flex-row "
       >
         <div className="header__logo">
-          <img
+          {/* <img
             src={app.logo}
             alt="logo"
             style={{ maxWidth: 100 }}
             onClick={() => navigate("/")}
-          />
+          /> */}
 
-          {/* <img src={img} alt="logo" style={{ maxWidth: 220 }} /> */}
+          <img
+            src={img}
+            alt="logo"
+            style={{ maxWidth: 100 }}
+            onClick={() => navigate("/")}
+          />
         </div>
         <div className="flex justify-center mr-[65px]">
           {menuList.map((item: any) => {
