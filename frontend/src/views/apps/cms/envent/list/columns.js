@@ -96,6 +96,14 @@ export default function Columns(userData, handleGetlist) {
       cell: (row) => row?.blood_type,
     },
     {
+      name: "Danh mục",
+      minWidth: "150px",
+      selector: (row) => row.category_post_id,
+      sortable: true,
+      sortField: "category_post_id",
+      cell: (row) => row?.categoryPost?.name,
+    },
+    {
       name: "Trạng thái",
       width: "150px",
       selector: (row) => row.status,

@@ -25,6 +25,7 @@ import { SCHEMA_ADD_ENVENT } from "../../../../../constants/validation";
 import UserService from "@services/UserService";
 
 import moment from "moment";
+import CategoryPostService from "@services/CategoryPostService";
 
 const statusObject = {
   DEACTIVE: { value: "deactive", label: "Chờ phê duyệt", number: 1 },
@@ -36,6 +37,7 @@ const schema = yup.object(SCHEMA_ADD_ENVENT).required();
 const EnventTab = ({ initial }) => {
   const [disable, setDisable] = useState(false);
   const [users, setUser] = useState([]);
+  const [categoryPost, setCategoryPost] = useState([]);
 
   const [loading, setLoading] = useState();
   const userData = JSON.parse(localStorage.getItem("userData"));
@@ -58,6 +60,10 @@ const EnventTab = ({ initial }) => {
           label: `${note.user.code} - ${note.user.name}`,
         }))
       : [],
+    category_post_id: {
+      value: initial?.categoryPost?.id,
+      label: initial?.categoryPost?.name,
+    },
   };
 
   const {
@@ -83,6 +89,12 @@ const EnventTab = ({ initial }) => {
       });
       setUser(data);
     })();
+    (async () => {
+      const data = await CategoryPostService.getAllCategoryPost({
+        status: "ACTIVE",
+      });
+      setCategoryPost(data?.data);
+    })();
   }, []);
 
   const onSubmit = async (values) => {
@@ -96,6 +108,7 @@ const EnventTab = ({ initial }) => {
         end_time: moment(values?.end_time).format("HH:mm"),
         location: values.location,
         blood_count: values.blood_count,
+        category_post_id: values?.category_post_id?.value,
         blood_type: values?.blood_type || null,
         content: values?.content,
         status: values.status.value,
@@ -328,7 +341,7 @@ const EnventTab = ({ initial }) => {
           </FormGroup>
         </Col>
 
-        <Col sm="12" className="mb-2">
+        <Col sm="6" className="mb-2">
           <FormGroup>
             <Label>
               Bác sĩ tham gia: <span className="text-danger">*</span>
@@ -367,6 +380,52 @@ const EnventTab = ({ initial }) => {
             />
             <small className="text-danger">
               {errors?.user_id && errors.user_id.message}
+            </small>
+          </FormGroup>
+        </Col>
+
+        <Col sm="6">
+          <FormGroup>
+            <Label>
+              Danh mục:<span className="text-danger">*</span>
+            </Label>
+            <Controller
+              control={control}
+              name="category_post_id"
+              render={({ field }) => (
+                <Select
+                  theme={selectThemeColors}
+                  isClearable={false}
+                  className="react-select"
+                  placeholder="Chọn danh mục"
+                  classNamePrefix="select"
+                  styles={{
+                    control: (base) => ({
+                      ...base,
+                      border: errors.category_post_id?.message
+                        ? "1px solid red"
+                        : "",
+                    }),
+                  }}
+                  options={
+                    categoryPost?.length > 0
+                      ? categoryPost?.map((item, index) => {
+                          return {
+                            value: item?.id,
+                            label: `${item?.name}`, // Gán tên bệnh viện vào nhãn (label)
+                            number: index + 1,
+                          };
+                        })
+                      : []
+                  }
+                  value={field.value} // Giá trị hiện tại của trường category_post_id
+                  onChange={field.onChange} // Cập nhật giá trị khi người dùng chọn
+                  {...field}
+                />
+              )}
+            />
+            <small className="text-danger">
+              {errors?.category_post_id && errors.category_post_id.message}
             </small>
           </FormGroup>
         </Col>

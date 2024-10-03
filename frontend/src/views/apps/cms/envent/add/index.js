@@ -29,6 +29,7 @@ import { toast } from "react-toastify";
 import { SCHEMA_ADD_ENVENT } from "../../../../../constants/validation";
 import EnventService from "../../../../../services/EnventService";
 import UserService from "@services/UserService";
+import CategoryPostService from "@services/CategoryPostService";
 import moment from "moment";
 import "./style.scss";
 
@@ -37,6 +38,7 @@ const schema = yup.object(SCHEMA_ADD_ENVENT).required();
 const AddEnvent = ({ param }) => {
   // ** States
   const [users, setUser] = useState([]);
+  const [categoryPost, setCategoryPost] = useState([]);
 
   const [disable, setDisable] = useState(false);
   const history = useHistory();
@@ -55,6 +57,15 @@ const AddEnvent = ({ param }) => {
     };
 
     fetchUsers();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const data = await CategoryPostService.getAllCategoryPost({
+        status: "ACTIVE",
+      });
+      setCategoryPost(data?.data);
+    })();
   }, []);
 
   const {
@@ -95,6 +106,7 @@ const AddEnvent = ({ param }) => {
         location: values.location,
         blood_count: values.blood_count,
         blood_type: values?.blood_type || null,
+        category_post_id: values?.category_post_id?.value,
         content: values?.content,
         status: values.status.value,
         user_id: selectedDoctors, // Đây là mảng số
@@ -318,7 +330,7 @@ const AddEnvent = ({ param }) => {
           </FormGroup>
         </Col>
 
-        <Col sm="12" className="mb-2">
+        <Col sm="6" className="mb-2">
           <FormGroup>
             <Label>
               Bác sĩ tham gia: <span className="text-danger">*</span>
@@ -361,6 +373,52 @@ const AddEnvent = ({ param }) => {
             />
             <small className="text-danger">
               {errors?.user_id && errors.user_id.message}
+            </small>
+          </FormGroup>
+        </Col>
+
+        <Col sm="6">
+          <FormGroup>
+            <Label>
+              Danh mục:<span className="text-danger">*</span>
+            </Label>
+            <Controller
+              control={control}
+              name="category_post_id"
+              render={({ field }) => (
+                <Select
+                  theme={selectThemeColors}
+                  isClearable={false}
+                  className="react-select"
+                  placeholder="Chọn danh mục"
+                  classNamePrefix="select"
+                  styles={{
+                    control: (base) => ({
+                      ...base,
+                      border: errors.category_post_id?.message
+                        ? "1px solid red"
+                        : "",
+                    }),
+                  }}
+                  options={
+                    categoryPost?.length > 0
+                      ? categoryPost?.map((item, index) => {
+                          return {
+                            value: item?.id,
+                            label: `${item?.name}`,
+                            number: index + 1,
+                          };
+                        })
+                      : []
+                  }
+                  value={field.value}
+                  onChange={field.onChange}
+                  {...field}
+                />
+              )}
+            />
+            <small className="text-danger">
+              {errors?.category_post_id && errors.category_post_id.message}
             </small>
           </FormGroup>
         </Col>

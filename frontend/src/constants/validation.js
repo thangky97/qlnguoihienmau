@@ -540,6 +540,7 @@ export const SCHEMA_ADD_ENVENT = {
     .required("Vui lòng nhập thời gian kết thúc")
     .nullable(),
   location: yup.string().required("Vui lòng nhập địa điểm"),
+  category_post_id: yup.object().required("Vui lòng chọn danh mục"),
   blood_count: yup.string().required("Vui lòng nhập số lượng đơn vị máu"),
   content: yup.string().required("Vui lòng nhập nội dung chương trình"),
   // user_id: yup.object().required("Vui lòng chọn bác sĩ"),

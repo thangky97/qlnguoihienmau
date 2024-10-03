@@ -17,8 +17,7 @@ import Columns from "./columns";
 import { useSelector } from "react-redux";
 import { MANAGEMENT } from "../../../../../constants/app";
 import "./style.scss";
-import JobfieldService from "../../../../../services/JobfieldService";
-import DepartmentService from "../../../../../services/DepartmentService";
+import CategoryPostService from "@services/CategoryPostService";
 
 const CustomHeader = (props) => {
   const { data, userData } = props;
@@ -87,26 +86,15 @@ const EnventList = () => {
   const [loading, setLoading] = useState();
   const [status, setStatus] = useState(undefined);
 
-  const [departmentData, setListDepartment] = useState();
-  const [selectedDepartment, setSelectedDepartment] = useState();
-
-  const [jobfieldData, setListJobfield] = useState();
-  const [selectedJobfield, setSelectedJobfield] = useState();
+  const [categoryPost, setCategoryPost] = useState();
+  const [selectedCategoryPost, setSelectedCategoryPost] = useState();
 
   useEffect(() => {
     (async () => {
-      const { data } = await JobfieldService.getList({
-        filter: { status: "ACTIVE" },
-        sort: { by: "id", type: "desc" },
-        page: { page: 1, limit: 10000000000 },
-      });
-      setListJobfield(data.list);
-    })();
-    (async () => {
-      const { data } = await DepartmentService.getAllDepartment({
+      const { data } = await CategoryPostService.getAllCategoryPost({
         status: "ACTIVE",
       });
-      setListDepartment(data);
+      setCategoryPost(data);
     })();
   }, []);
 
@@ -119,10 +107,8 @@ const EnventList = () => {
         ...prev,
         filter: {
           ...data,
-          // title: data?.title ? data?.title?.trim() : null,
           status: data?.status?.value,
-          jobfield_id: data?.jobfield_id?.value || null,
-          department_id: data?.department_id?.value || null,
+          category_post_id: data?.category_post_id?.value || null,
         },
         page: {
           ...prev.page,
@@ -253,76 +239,38 @@ const EnventList = () => {
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Row className="mx-0 mt-2 d-flex align-items-center justify-content-between d-lg-none d-flex d-md-none">
               <Col md="3" className="mb-1">
-                <Label>Lĩnh vực</Label>
+                <Label>Danh mục</Label>
                 <Controller
                   control={control}
-                  name="jobfield_id"
+                  name="category_post_id"
                   render={({ field }) => (
                     <Select
                       theme={selectThemeColors}
                       isClearable={false}
                       className="react-select"
-                      placeholder="Lĩnh vực"
+                      placeholder="Danh mục"
                       classNamePrefix="select"
                       options={
-                        jobfieldData?.length > 0 && [
+                        categoryPost?.length > 0 && [
                           {
                             value: null,
-                            label: "Chọn lĩnh vực",
+                            label: "Chọn danh mục",
                             number: 0,
                           },
-                          ...jobfieldData?.map((item, index) => {
+                          ...categoryPost?.map((item, index) => {
                             return {
                               value: item?.id,
-                              label: `${item?.code} - ${item?.name}`,
+                              label: item?.name,
                               number: index + 1,
                             };
                           }),
                         ]
                       }
                       {...field}
-                      value={selectedJobfield}
+                      value={selectedCategoryPost}
                       onChange={(e) => {
                         field.onChange(e);
-                        setSelectedJobfield(e);
-                      }}
-                    />
-                  )}
-                />
-              </Col>
-              <Col md="3" className="mb-1">
-                <Label>Phòng ban</Label>
-                <Controller
-                  control={control}
-                  name="department_id"
-                  render={({ field }) => (
-                    <Select
-                      theme={selectThemeColors}
-                      isClearable={false}
-                      className="react-select"
-                      placeholder="Phòng ban"
-                      classNamePrefix="select"
-                      options={
-                        departmentData?.length > 0 && [
-                          {
-                            value: null,
-                            label: "Chọn phòng ban",
-                            number: 0,
-                          },
-                          ...departmentData?.map((item, index) => {
-                            return {
-                              value: item?.id,
-                              label: `${item?.code} - ${item?.name}`,
-                              number: index + 1,
-                            };
-                          }),
-                        ]
-                      }
-                      {...field}
-                      value={selectedDepartment}
-                      onChange={(e) => {
-                        field.onChange(e);
-                        setSelectedDepartment(e);
+                        setSelectedCategoryPost(e);
                       }}
                     />
                   )}
@@ -373,76 +321,38 @@ const EnventList = () => {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Row className="mx-0 my-1 align-items-center d-lg-flex d-none d-md-flex">
             <Col md="3" className="mb-1">
-              <Label>Lĩnh vực</Label>
+              <Label>Danh mục</Label>
               <Controller
                 control={control}
-                name="jobfield_id"
+                name="category_post_id"
                 render={({ field }) => (
                   <Select
                     theme={selectThemeColors}
                     isClearable={false}
                     className="react-select"
-                    placeholder="Lĩnh vực"
+                    placeholder="Danh mục"
                     classNamePrefix="select"
                     options={
-                      jobfieldData?.length > 0 && [
+                      categoryPost?.length > 0 && [
                         {
                           value: null,
-                          label: "Chọn lĩnh vực",
+                          label: "Chọn danh mục",
                           number: 0,
                         },
-                        ...jobfieldData?.map((item, index) => {
+                        ...categoryPost?.map((item, index) => {
                           return {
                             value: item?.id,
-                            label: `${item?.code} - ${item?.name}`,
+                            label: item?.name,
                             number: index + 1,
                           };
                         }),
                       ]
                     }
                     {...field}
-                    value={selectedJobfield}
+                    value={selectedCategoryPost}
                     onChange={(e) => {
                       field.onChange(e);
-                      setSelectedJobfield(e);
-                    }}
-                  />
-                )}
-              />
-            </Col>
-            <Col md="3" className="mb-1">
-              <Label>Phòng ban</Label>
-              <Controller
-                control={control}
-                name="department_id"
-                render={({ field }) => (
-                  <Select
-                    theme={selectThemeColors}
-                    isClearable={false}
-                    className="react-select"
-                    placeholder="Phòng ban"
-                    classNamePrefix="select"
-                    options={
-                      departmentData?.length > 0 && [
-                        {
-                          value: null,
-                          label: "Chọn phòng ban",
-                          number: 0,
-                        },
-                        ...departmentData?.map((item, index) => {
-                          return {
-                            value: item?.id,
-                            label: `${item?.code} - ${item?.name}`,
-                            number: index + 1,
-                          };
-                        }),
-                      ]
-                    }
-                    {...field}
-                    value={selectedDepartment}
-                    onChange={(e) => {
-                      field.onChange(e);
-                      setSelectedDepartment(e);
+                      setSelectedCategoryPost(e);
                     }}
                   />
                 )}
