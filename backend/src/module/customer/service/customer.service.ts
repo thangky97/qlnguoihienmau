@@ -8,23 +8,11 @@ import { FindOneOptions, Like, Not, Repository } from 'typeorm';
 import { Customer } from '../entity/customer.entity';
 import { Role, Status } from '@config/enum';
 import { CustomerQueryDto } from '@module/customer/dto/customer.query.dto';
-import { Inquiry } from '@module/inquiry/entity/inquiry.entity';
-import { Contract } from '@module/contract/entity/contract.entity';
-import { Job } from '@module/job/entity/job.entity';
-import { Task } from '@module/task/entity/task.entity';
 import { NoteHistoryInquiry } from '@module/note_history_inquiry/entity/note_history_inquiry.entity';
 
 @Injectable()
 export class CustomerService {
-  constructor(
-    @InjectRepository(Customer) private readonly customerRepository: Repository<Customer>,
-    @InjectRepository(Inquiry) private readonly inquiryRepository: Repository<Inquiry>,
-    @InjectRepository(Contract) private readonly contractRepository: Repository<Contract>,
-    @InjectRepository(Job) private readonly jobRepository: Repository<Job>,
-    @InjectRepository(Task) private readonly taskRepository: Repository<Task>,
-    @InjectRepository(NoteHistoryInquiry) private readonly noteHistoryRepository: Repository<NoteHistoryInquiry>,
-    private readonly commonService: CommonService,
-  ) {}
+  constructor(@InjectRepository(Customer) private readonly customerRepository: Repository<Customer>, @InjectRepository(NoteHistoryInquiry) private readonly noteHistoryRepository: Repository<NoteHistoryInquiry>, private readonly commonService: CommonService) {}
 
   async findOne(query: FindOneOptions): Promise<Customer> {
     return await this.customerRepository.findOne(query);
@@ -171,47 +159,6 @@ export class CustomerService {
 
   async delete(query: any) {
     try {
-      const inquiryToDelete = await this.inquiryRepository.find({
-        where: {
-          customer_code: query?.code,
-        },
-      });
-
-      const contractToDelete = await this.contractRepository.find({
-        where: {
-          customer_code: query?.code,
-        },
-      });
-
-      for (const contract of contractToDelete) {
-        const jobToDelete = await this.jobRepository.find({
-          where: {
-            contract_id: contract.id,
-          },
-        });
-
-        for (const job of jobToDelete) {
-          const taskToDelete = await this.taskRepository.find({
-            where: {
-              job_id: job.id,
-            },
-          });
-
-          for (const task of taskToDelete) {
-            await this.taskRepository.remove(task);
-          }
-        }
-
-        for (const job of jobToDelete) {
-          await this.jobRepository.remove(job);
-        }
-
-        await this.contractRepository.remove(contract);
-      }
-      for (const inquiry of inquiryToDelete) {
-        await this.inquiryRepository.remove(inquiry);
-      }
-
       await this.customerRepository.delete({
         code: query?.code,
       });

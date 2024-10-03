@@ -39,7 +39,6 @@ export class TaskService {
           job_id: body?.filter?.job_id || undefined,
         },
       },
-      relations: { jobfield: true, job: { contract: true }, department: true },
     });
   }
 
@@ -54,20 +53,9 @@ export class TaskService {
         taskname: query.taskname ? Like(`%${query.taskname}%`) : undefined,
         jobfield_id: query.jobfield_id ? query.jobfield_id : undefined,
         job_id: query.job_id ? query.job_id : undefined,
-        department_id: query.department_id ? query.department_id : undefined,  // Add department_id filter
+        department_id: query.department_id ? query.department_id : undefined, // Add department_id filter
         status: query.status ? query.status : undefined,
         workstatus: query.workstatus ? query.workstatus : undefined,
-      },
-      relations: {
-        jobfield: {
-          workingprocesstemplate: true,
-        },
-        job: {
-          contract: {
-            customer: true,
-          },
-        },
-        department: true,
       },
       order: {
         sequence: 'ASC',
@@ -78,7 +66,7 @@ export class TaskService {
 
   async getDetail(id: number) {
     try {
-      const data = await this.findOne({ where: { id: id }, relations: { jobfield: true, job: true, department: true } });
+      const data = await this.findOne({ where: { id: id } });
       return data;
     } catch (error) {
       console.log(error);
@@ -100,7 +88,6 @@ export class TaskService {
           where: {
             id: data?.job_id,
           },
-          relations: { task: true },
         });
 
         // Kiểm tra và cập nhật trạng thái workstatus của job

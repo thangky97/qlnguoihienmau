@@ -13,17 +13,9 @@ class FilterUser {
   @IsString()
   phone?: string;
   @IsString()
-  gender?: Gender;
-  @IsString()
   status?: Status;
   @IsString()
   role: Role;
-  @IsNumber()
-  @IsOptional()
-  company_id: number;
-  @IsNumber()
-  @IsOptional()
-  department_id: number;
 }
 
 export class UserFilterDto {

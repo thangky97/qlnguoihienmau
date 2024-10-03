@@ -33,8 +33,6 @@ export class InquiryService {
 
       if (newInquiry) {
         const newNoteHistory = this.noteHistoryInquiryRepository.create({
-          inquiry_id: newInquiry.id,
-          processingStatus: newInquiry?.processingStatus,
           note: newInquiry.note || '',
         });
 
@@ -57,10 +55,8 @@ export class InquiryService {
         filter: {
           status: body.filter.status,
           customer_code: body?.filter?.customer_code || undefined,
-          jobfield_id: body?.filter?.jobfield_id || undefined,
         },
       },
-      relations: { customer: true, jobfield: true },
     });
   }
 
@@ -69,13 +65,11 @@ export class InquiryService {
       return await this.inquiryRepository.find({
         where: {
           // name: query.name && Like(`%${query.name}%`),
-          jobfield_id: query.jobfield_id,
           customer_code: query.customer_code,
           status: query.status,
           processingStatus: query?.processingStatus,
           created_at: (query.startDate || query.endDate) && this.makeObjectQuery(query.startDate, query.endDate),
         },
-        relations: { customer: true, jobfield: true },
         order: {
           id: 'DESC',
         },
@@ -87,7 +81,7 @@ export class InquiryService {
 
   async getDetail(id: number) {
     try {
-      const data = await this.findOne({ where: { id: id }, relations: { customer: true, jobfield: true } });
+      const data = await this.findOne({ where: { id: id } });
       return data;
     } catch (error) {
       console.log(error);
@@ -127,8 +121,6 @@ export class InquiryService {
 
       // Tạo bản ghi mới trong noteHistoryInquiry dựa trên thông tin inquiry đã cập nhật
       const newNoteHistory = this.noteHistoryInquiryRepository.create({
-        inquiry_id: updatedInquiry.id,
-        processingStatus: updatedInquiry.processingStatus,
         note: updatedInquiry.note || '',
       });
 

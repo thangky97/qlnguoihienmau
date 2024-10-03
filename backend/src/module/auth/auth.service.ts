@@ -19,7 +19,6 @@ import { Like, Repository } from 'typeorm';
 import { ACCOUNT_ALREADY_EXISTS, CODE_EXISTS, ERROR_SYSTEM, EMAIL_ALREADY_EXISTS } from '@config/constant';
 import { PREFIX_ID_USER } from '@config/constant';
 import { ResetPasswordDto } from './dto/reset-password.dto';
-import { Company } from '@module/company/entity/company.entity';
 
 export interface Tokens {
   access_token: string;
@@ -28,13 +27,7 @@ export interface Tokens {
 
 @Injectable()
 export class AuthService {
-  constructor(
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
-    @InjectRepository(Company) private readonly companyRepository: Repository<Company>,
-    private readonly usersService: UsersService,
-    private readonly jwtService: JwtService,
-    private readonly mailService: MailService,
-  ) {}
+  constructor(@InjectRepository(User) private readonly userRepository: Repository<User>, private readonly usersService: UsersService, private readonly jwtService: JwtService, private readonly mailService: MailService) {}
 
   hashPassword(password: string): string {
     const salt = bcrypt.genSaltSync(10);
@@ -99,7 +92,6 @@ export class AuthService {
 
   async signUpCustomer(User: SignUpCustomerDto) {
     User.role = Role.CUSTOMER;
-    User.verify = Verify.UNVERIFIED;
     User.status = Status.ACTIVE;
     const check_username = await this.userRepository.findOne({
       where: { username: User.username },
@@ -154,15 +146,10 @@ export class AuthService {
         },
         '1 Agent',
       );
-      const comapany = await this.companyRepository.findOne({
-        where: {
-          id: resultUser?.company_id,
-        },
-      });
       const data = {
         email: resultUser?.email,
         first_name: resultUser?.name,
-        last_name: comapany ? comapany?.name : '1TOUR',
+        last_name: 'BV',
       };
       await this.usersService.addMemberToAudience(data);
       return resultUser;
@@ -183,13 +170,8 @@ export class AuthService {
         authorities: [],
         password: userGoogle.google_id,
         role: Role.CUSTOMER,
-        company_tax_code: ' ',
-        referral_source_id: null,
-        department_id: 5,
         phone: ' ',
         address: ' ',
-        company_id: null,
-        branch_id: null,
       });
     } else {
       result = user;

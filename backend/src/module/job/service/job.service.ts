@@ -75,7 +75,6 @@ export class JobService {
   //     if (newJob) {
   //       const jobFiled = await this.JobfieldRepository.findOne({
   //         where: { id: newJob.jobfield_id },
-  //         relations: { workingprocesstemplate: true },
   //       });
 
   //       if (jobFiled) {
@@ -135,7 +134,6 @@ export class JobService {
       if (newJob) {
         const jobField = await this.JobfieldRepository.findOne({
           where: { id: newJob.jobfield_id },
-          relations: { workingprocesstemplate: true },
         });
 
         if (jobField) {
@@ -278,24 +276,24 @@ export class JobService {
 
   async calculateTaskDates(tasks: Task[]): Promise<Task[]> {
     const updatedTasks: Task[] = [];
-    
+
     // Sort tasks by sequence to maintain order
     const sortedTasks = tasks.sort((a, b) => a.sequence - b.sequence);
-  
+
     // Map to store task end dates by Workingprocesstemplate_id
     const endDateMap = new Map<number, Date>();
-  
+
     // Loop through the sorted tasks and calculate processDate and endDate
     for (const task of sortedTasks) {
       let processDate: Date;
-      
+
       if (task.prev_Workingprocesstemplate_id === 0) {
         // If it's the first task or no previous task
         processDate = new Date(task.createDate);
       } else {
         // Get the endDate of the previous task from the map
         const prevTaskEndDate = endDateMap.get(task.prev_Workingprocesstemplate_id);
-  
+
         // Process date is the day after the previous task's end date
         if (prevTaskEndDate) {
           processDate = new Date(prevTaskEndDate.getTime() + 24 * 60 * 60 * 1000);
@@ -304,14 +302,14 @@ export class JobService {
           processDate = new Date(task.createDate);
         }
       }
-  
+
       // Calculate endDate based on the dealine field
-      const deadlineDays = Math.ceil(task.dealine);  // This ensures 0.5 becomes 1
-      const endDate = new Date(processDate.getTime() + (deadlineDays * 24 * 60 * 60 * 1000) - (24 * 60 * 60 * 1000));
-  
+      const deadlineDays = Math.ceil(task.dealine); // This ensures 0.5 becomes 1
+      const endDate = new Date(processDate.getTime() + deadlineDays * 24 * 60 * 60 * 1000 - 24 * 60 * 60 * 1000);
+
       // Store the endDate for the current task in the map
       endDateMap.set(task.Workingprocesstemplate_id, endDate);
-  
+
       // Update the task with the new processDate and endDate
       updatedTasks.push({
         ...task,
@@ -319,10 +317,9 @@ export class JobService {
         endDate: endDate,
       });
     }
-  
+
     return updatedTasks;
   }
-  
 
   async find(body: JobFilterDto) {
     return await this.commonService.getTotalAndList({
@@ -336,7 +333,6 @@ export class JobService {
           contract_id: body?.filter?.contract_id || undefined,
         },
       },
-      relations: { userJo: true, jobfield: true, contract: true },
     });
   }
 
@@ -349,7 +345,6 @@ export class JobService {
         user_code: query.user_code,
         status: query.status,
       },
-      relations: { userJob: true, jobfield: true, contract: true, task: true },
       order: {
         id: 'DESC',
       },
@@ -482,7 +477,7 @@ export class JobService {
 
   async getDetail(id: number) {
     try {
-      const data = await this.findOne({ where: { id: id }, relations: { userJob: true, jobfield: true, contract: true } });
+      const data = await this.findOne({ where: { id: id } });
       return data;
     } catch (error) {
       console.log(error);

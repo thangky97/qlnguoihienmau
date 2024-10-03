@@ -1,13 +1,6 @@
-import { Status, WorkStatus, StatusContract, ProcessingStatus } from '@config/enum';
+import { WorkStatus, StatusContract, ProcessingStatus } from '@config/enum';
 
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { Jobfield } from '@module/jobfield/entity/jobfield.entity';
-import { Customer } from '@module/customer/entity/customer.entity';
-import { IsString } from 'class-validator';
-import { Inquiry } from '@module/inquiry/entity/inquiry.entity';
-import { User } from '@module/user/entity/user.entity';
-import { Job } from '@module/job/entity/job.entity';
-import { NoteHistoryContract } from '@module/note_history_contract/entity/note_history_contract.entity';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Contract {
@@ -25,13 +18,6 @@ export class Contract {
 
   @Column({ type: 'text' })
   description: string;
-
-  @Column({ type: 'int', nullable: true })
-  jobfield_id: number;
-
-  @Column({ type: 'int', nullable: true })
-  inquiry_id: number;
-
   @Column({ type: 'date' })
   createDate: Date;
 
@@ -52,28 +38,6 @@ export class Contract {
     enum: WorkStatus,
   })
   workstatus?: WorkStatus;
-
-  @ManyToOne(() => Customer, (customer) => customer.contract)
-  @JoinColumn({ name: 'customer_code', referencedColumnName: 'code' })
-  customer?: Customer;
-
-  @ManyToOne(() => User, (user) => user.contractUser)
-  @JoinColumn({ name: 'user_code', referencedColumnName: 'code' })
-  contractUser?: User;
-
-  @ManyToOne(() => Jobfield, (jobfield) => jobfield.contract)
-  @JoinColumn({ name: 'jobfield_id', referencedColumnName: 'id' })
-  jobfield?: Jobfield;
-
-  @ManyToOne(() => Inquiry, (inquiry) => inquiry.contract)
-  @JoinColumn({ name: 'inquiry_id', referencedColumnName: 'id' })
-  inquiry?: Inquiry;
-
-  @OneToMany(() => Job, (job) => job.contract, { cascade: true })
-  contract?: Job[];
-
-  @OneToMany(() => NoteHistoryContract, (note_history_contract) => note_history_contract.contract, { cascade: true })
-  note_history_contract?: NoteHistoryContract[];
 
   @Column({
     type: 'enum',

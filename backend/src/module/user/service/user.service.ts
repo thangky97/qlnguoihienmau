@@ -11,19 +11,13 @@ import { UserProfileDto } from '../dto/user.profile.dto';
 import { UserQueryDto, UserQueryCustomerDto } from '../dto/user.query.dto';
 import { User } from '../entity/user.entity';
 import { Authority } from '../entity/authority.entity';
-import { Company } from '@module/company/entity/company.entity';
 import { MailService } from '@module/mail/mail.service';
-import { Branch } from '@module/branch/entity/branch.entity';
 import axios from 'axios';
 import querystring from 'querystring';
 import { ZaloDto } from '../dto/zalo.dto';
 import { AddMemberToAudienceDto } from '../dto/addmemberaudience.dto';
 import { MailDto } from '../dto/mail.dto';
-import { Inquiry } from '@module/inquiry/entity/inquiry.entity';
-import { Contract } from '@module/contract/entity/contract.entity';
 import { Job } from '@module/job/entity/job.entity';
-import { Task } from '@module/task/entity/task.entity';
-import { Workingprocesstemplate } from '@module/workingprocesstemplate/entity/workingprocesstemplate.entity';
 @Injectable()
 export class UsersService {
   private refreshToken: string;
@@ -33,15 +27,8 @@ export class UsersService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     private readonly commonService: CommonService,
     @InjectRepository(Authority) private readonly AuthorityRepository: Repository<Authority>,
-    @InjectRepository(Company) private readonly companyRepository: Repository<Company>,
     private readonly mailService: MailService,
     @InjectRepository(Authority) private readonly authRepository: Repository<Authority>,
-    @InjectRepository(Branch) private readonly branchRepository: Repository<Branch>,
-    @InjectRepository(Inquiry) private readonly inquiryRepository: Repository<Inquiry>,
-    @InjectRepository(Contract) private readonly contractRepository: Repository<Contract>,
-    @InjectRepository(Job) private readonly jobRepository: Repository<Job>,
-    @InjectRepository(Task) private readonly taskRepository: Repository<Task>,
-    @InjectRepository(Workingprocesstemplate) private readonly workingprocesstemplateRepository: Repository<Workingprocesstemplate>,
   ) {
     this.refreshToken =
       'XHhwCww9eqc57FmrgOclJuyTy3-dbF8tu7lrDCYe_1oxFCWbrFQILAStgYN8mOjKiak6CC-RiXA-MR8voQw3FRfGWpZyaT0pr4xh0w-OmGxTKSa_fw7uCun8v4xybUnVr6tj8hlxpm7J3PTmeF-uU_mlYKY6iOqih5AV4T2WWG-UICSYzeIQAAX6lZFKg9u_iME10UM5nnUBTjKInfhBAP18p2l2YVKXxa7IB9sZ_rowO-97q8pZTejZx0pPa-bpy63t3AQJpIpIJkqdb96tFxzqjJAPgeGIvqY04Rs2tspeLVDenPUkJum1bKBMu8Tek3U3LUBoYdkx7THexUMBISKWaMgAvBbA_16qQQ7blb3RUwThde-aODHgZ6UxYgHeuHw44fVIh6Bx1Ofi7wThIQwJe4q';
@@ -105,15 +92,10 @@ export class UsersService {
 
     const result = await this.userRepository.save({ ...User, code: generateId });
     if (result) {
-      const comapany = await this.companyRepository.findOne({
-        where: {
-          id: result?.company_id,
-        },
-      });
       const data = {
         email: result?.email,
         first_name: result?.name,
-        last_name: comapany ? comapany?.name : '1TOUR',
+        last_name: 'BV',
       };
       await this.addMemberToAudience(data);
     }
@@ -168,15 +150,10 @@ export class UsersService {
 
       const result = await this.userRepository.save({ ...User, code: generateId });
       if (result) {
-        const comapany = await this.companyRepository.findOne({
-          where: {
-            id: result?.company_id,
-          },
-        });
         const data = {
           email: result?.email,
           first_name: result?.name,
-          last_name: comapany ? comapany?.name : '1TOUR',
+          last_name: 'BV',
         };
         await this.addMemberToAudience(data);
       }
@@ -453,10 +430,10 @@ export class UsersService {
   }
 
   async getDetail(code: string) {
-    return await this.findOne({ where: { code: code }, relations: { authorities: true, company: true, company_referral: true, branch: true, department: true } });
+    return await this.findOne({ where: { code: code }, relations: { authorities: true } });
   }
   async getProfile(user: User) {
-    const data = await this.findOne({ where: { code: user.code }, relations: { authorities: true, company: true } });
+    const data = await this.findOne({ where: { code: user.code }, relations: { authorities: true } });
     delete data.password;
     return data;
   }
@@ -479,12 +456,10 @@ export class UsersService {
             address: body.filter.address && Like(`%${body.filter.address}%`),
             role: body.filter.role,
             status: body.filter.status,
-            gender: body.filter.gender,
-            department_id: body?.filter?.department_id,
           },
         },
-        relations: { authorities: true, company: true, company_referral: true, department: true },
-        select: ['id', 'code', 'name', 'phone', 'role', 'gender', 'company_tax_code', 'status', 'username', 'expand_1', 'expand_2', 'expand_3', 'created_at', 'updated_at', 'referral_source_id', 'company_id', 'verify', 'email', 'address'],
+        relations: { authorities: true },
+        select: ['id', 'code', 'name', 'phone', 'role', 'status', 'username', 'created_at', 'updated_at', 'email', 'address'],
       });
     } catch (error) {
       console.log(error);
@@ -494,11 +469,9 @@ export class UsersService {
     return await this.userRepository.find({
       where: {
         role: Not(Role.CUSTOMER),
-        department_id: query?.department_id || undefined,
         status: query?.status || undefined,
       },
       select: { id: true, code: true, username: true, name: true, role: true },
-      relations: { department: true },
       order: {
         id: 'DESC',
       },
@@ -508,7 +481,7 @@ export class UsersService {
   async findAllCustomer(query: UserQueryCustomerDto) {
     return await this.userRepository.find({
       select: { code: true, username: true, name: true, role: true, phone: true },
-      where: { role: Role.CUSTOMER, status: query?.status || undefined, verify: query?.verify || undefined },
+      where: { role: Role.CUSTOMER, status: query?.status || undefined },
 
       order: {
         id: 'DESC',
@@ -536,9 +509,6 @@ export class UsersService {
       phone: userDto.phone,
       gender: userDto.gender,
       email: userDto.email,
-      company_tax_code: userDto.company_tax_code,
-      referral_source_id: null,
-      // password: userDto.password,
       ...(userDto.password ? { password: userDto.password } : {}),
       ...(userDto.avatar ? { avatar: userDto.avatar } : {}),
     };
@@ -548,99 +518,10 @@ export class UsersService {
 
   async delete(query: any) {
     try {
-      const contractToDelete = await this.contractRepository.find({
-        where: {
-          user_code: query?.code,
-        },
-      });
-
-      const jobToDelete = await this.jobRepository.find({
-        where: {
-          user_code: query?.code,
-        },
-      });
-
-      for (const job of jobToDelete) {
-        const taskToDelete = await this.taskRepository.find({
-          where: {
-            job_id: job.id,
-          },
-        });
-
-        for (const task of taskToDelete) {
-          await this.taskRepository.remove(task);
-        }
-      }
-
-      for (const contract of contractToDelete) {
-        await this.contractRepository.remove(contract);
-      }
-
-      for (const job of jobToDelete) {
-        await this.jobRepository.remove(job);
-      }
-
-      // for (const workingprocesstemplate of workingprocesstemplateToDelete) {
-      //   await this.workingprocesstemplateRepository.remove(workingprocesstemplate);
-      // }
-
       await this.userRepository.delete({
         code: query?.code,
       });
       return 'ok';
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async deleteBranch(query: any) {
-    const branchToDelete = await this.branchRepository.find({
-      where: {
-        company_id: query?.id,
-      },
-    });
-    if (branchToDelete) {
-      for (const branch of branchToDelete) {
-        const usersToDeletes = await this.userRepository.find({
-          where: { branch_id: branch?.id },
-        });
-
-        for (const users of usersToDeletes) {
-          const querys = {
-            id: users.id,
-            code: users.code,
-          };
-          await this.delete(querys);
-        }
-        // Sau đó xóa đơn đặt hàng
-        await this.branchRepository.remove(branch);
-      }
-    }
-  }
-
-  async delete_company(query: any) {
-    try {
-      if (query?.id != null) {
-        const usersToDelete = await this.userRepository.find({
-          where: [{ company_id: query?.id }, { referral_source_id: query?.id }],
-        });
-        if (usersToDelete) {
-          for (const users of usersToDelete) {
-            const querys = {
-              id: users.id,
-              code: users.code,
-            };
-            await this.delete(querys);
-          }
-        }
-
-        this.deleteBranch(query);
-
-        await this.companyRepository.delete({
-          id: query?.id,
-        });
-        return 'ok';
-      }
     } catch (error) {
       console.log(error);
     }

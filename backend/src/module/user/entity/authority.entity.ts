@@ -19,11 +19,4 @@ export class Authority {
   @ManyToOne(() => User, (user) => user.authorities)
   @JoinColumn({ name: 'user_code', referencedColumnName: 'code' })
   user?: User;
-
-  @Column({ type: 'varchar', nullable: true })
-  expand_1: string;
-  @Column({ type: 'varchar', nullable: true })
-  expand_2: string;
-  @Column({ type: 'varchar', nullable: true })
-  expand_3: string;
 }

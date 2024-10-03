@@ -16,10 +16,4 @@ export class UserProfileDto {
   @IsString()
   @IsOptional()
   avatar: string;
-  @IsString()
-  @IsOptional()
-  company_tax_code: string;
-  @IsNumber()
-  @IsOptional()
-  referral_source_id: number;
 }

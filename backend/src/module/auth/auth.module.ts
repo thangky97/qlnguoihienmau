@@ -11,16 +11,13 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { ResetPasswordStrategy } from './strategies/resetPassword.strategy';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '@module/user/entity/user.entity';
-import { CompanyModule } from '@module/company/company.module';
-import { Company } from '@module/company/entity/company.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Company]),
+    TypeOrmModule.forFeature([]),
     UsersModule,
     PassportModule,
     MailModule,
-    CompanyModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

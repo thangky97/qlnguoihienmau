@@ -25,10 +25,6 @@ export class AtStrategy extends PassportStrategy(Strategy, 'jwt-at') {
     if (user?.status === Status.DEACTIVE) {
       throw new UnauthorizedException(UNAUTHORIZED);
     }
-
-    if (user?.verify === Verify.UNVERIFIED) {
-      throw new UnauthorizedException(UNAUTHORIZED);
-    }
     return user;
   }
 }

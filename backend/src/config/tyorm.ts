@@ -1,16 +1,7 @@
-import { Company } from '@module/company/entity/company.entity';
 import { Authority } from '@module/user/entity/authority.entity';
 import { User } from '@module/user/entity/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Branch } from '@module/branch/entity/branch.entity';
-import { Jobfield } from '@module/jobfield/entity/jobfield.entity';
 import { Customer } from '@module/customer/entity/customer.entity';
-import { Department } from '@module/department/entity/department.entity';
-import { Workingprocesstemplate } from '@module/workingprocesstemplate/entity/workingprocesstemplate.entity';
-import { Inquiry } from '@module/inquiry/entity/inquiry.entity';
-import { Contract } from '@module/contract/entity/contract.entity';
-import { Job } from '@module/job/entity/job.entity';
-import { Task } from '@module/task/entity/task.entity';
 import { NoteHistoryInquiry } from '@module/note_history_inquiry/entity/note_history_inquiry.entity';
 import { NoteHistoryContract } from '@module/note_history_contract/entity/note_history_contract.entity';
 import { CategoryPost } from '@module/category_post/entity/category_post.entity';
@@ -20,5 +11,5 @@ import { Hospital } from '@module/hospital/entity/hospital.entity';
 import { Blood } from '@module/blood/entity/blood.entity';
 import { BloodDetail } from '@module/blood_detail/entity/blood_detail.entity';
 
-const typeOrm = TypeOrmModule.forFeature([User, Authority, Company, Branch, Jobfield, Customer, Department, Workingprocesstemplate, Inquiry, Contract, Job, Task, NoteHistoryInquiry, NoteHistoryContract, CategoryPost, Envent, RegisterDonateBlood, Hospital, Blood, BloodDetail]);
+const typeOrm = TypeOrmModule.forFeature([User, Authority, Customer, NoteHistoryInquiry, NoteHistoryContract, CategoryPost, Envent, RegisterDonateBlood, Hospital, Blood, BloodDetail]);
 export default typeOrm;

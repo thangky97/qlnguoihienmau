@@ -444,8 +444,6 @@ export class JobfieldService {
       await this.workingprocesstemplateRepository.update({ jobfield: { id } }, { jobfield_id: null });
       await this.jobRepository.update({ jobfield: { id } }, { jobfield_id: null });
       await this.taskRepository.update({ jobfield: { id } }, { jobfield_id: null });
-      await this.inquiryRepository.update({ jobfield: { id } }, { jobfield_id: null });
-      await this.contractRepository.update({ jobfield: { id } }, { jobfield_id: null });
 
       // Now you can safely delete the jobfield
       const result = await this.findOne({ where: { id } });

@@ -6,14 +6,12 @@ import { NoteHistoryInquiryDto } from '@module/note_history_inquiry/dto/note_his
 
 import { FindOneOptions, Repository } from 'typeorm';
 import { NoteHistoryInquiryFilterDto } from '@module/note_history_inquiry/dto/note_history_inquiry.filter.dto';
-import { ProcessingStatus } from '@config/enum';
 import { NoteHistoryInquiryUDDto } from '@module/note_history_inquiry/dto/note_history_inquiryUD.dto';
 import { NoteHistoryInquiryQueryDto } from '../dto/note_history_inquiry.query.dto';
-import { Inquiry } from '@module/inquiry/entity/inquiry.entity';
 
 @Injectable()
 export class NoteHistoryInquiryService {
-  constructor(@InjectRepository(NoteHistoryInquiry) private readonly noteHistoryInquiryRepository: Repository<NoteHistoryInquiry>, @InjectRepository(Inquiry) private readonly inquiryRepository: Repository<Inquiry>, private readonly commonService: CommonService) {}
+  constructor(@InjectRepository(NoteHistoryInquiry) private readonly noteHistoryInquiryRepository: Repository<NoteHistoryInquiry>, private readonly commonService: CommonService) {}
 
   async findOne(query: FindOneOptions): Promise<NoteHistoryInquiry> {
     return await this.noteHistoryInquiryRepository.findOne(query);

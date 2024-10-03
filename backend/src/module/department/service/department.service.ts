@@ -11,19 +11,13 @@ import { DepartmentUDDto } from '@module/department/dto/departmentUD.dto';
 import { DepartmentQueryDto } from '../dto/department.query.dto';
 import { Task } from '@module/task/entity/task.entity';
 import { Job } from '@module/job/entity/job.entity';
-import { Workingprocesstemplate } from '@module/workingprocesstemplate/entity/workingprocesstemplate.entity';
-import { User } from '@module/user/entity/user.entity';
-import { DataSource } from 'typeorm';  // Import DataSource
-
-
+import { DataSource } from 'typeorm'; // Import DataSource
 @Injectable()
 export class DepartmentService {
   constructor(
     @InjectRepository(Department) private readonly departmentRepository: Repository<Department>,
     @InjectRepository(Job) private readonly jobRepository: Repository<Job>,
     @InjectRepository(Task) private readonly taskRepository: Repository<Task>,
-    @InjectRepository(Workingprocesstemplate) private readonly workingprocesstemplateRepository: Repository<Workingprocesstemplate>,
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
     private dataSource: DataSource,
     private readonly commonService: CommonService,
   ) {}
@@ -162,13 +156,7 @@ export class DepartmentService {
         .andWhere('department.status = :status', { status: 'ACTIVE' })
         .getMany();
 
-        const taskStatistics = await this.taskRepository.createQueryBuilder('task')
-        .select(['task.department_id', 'task.workstatus'])
-        .where('task.status = :status', { status: 'ACTIVE' })
-        .andWhere('task.processDate >= :start', { start })
-        .andWhere('task.processDate <= :end', { end })
-        .getMany();
-      
+      const taskStatistics = await this.taskRepository.createQueryBuilder('task').select(['task.department_id', 'task.workstatus']).where('task.status = :status', { status: 'ACTIVE' }).andWhere('task.processDate >= :start', { start }).andWhere('task.processDate <= :end', { end }).getMany();
 
       // Khởi tạo biến để lưu trữ kết quả thống kê
       return {
@@ -380,7 +368,7 @@ export class DepartmentService {
       throw new Error('Unable to generate report');
     }
   }
-  
+
   async update(department: DepartmentUDDto, id: number) {
     try {
       const result = await this.departmentRepository.findOne({
@@ -396,8 +384,7 @@ export class DepartmentService {
     }
   }
 
-
-  // Delete department and it constrain  
+  // Delete department and it constrain
   async delete_department(id: number): Promise<void> {
     const queryRunner = this.dataSource.createQueryRunner();
 
@@ -425,6 +412,4 @@ export class DepartmentService {
       await queryRunner.release();
     }
   }
-  
-
 }

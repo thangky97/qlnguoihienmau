@@ -2,8 +2,6 @@ import { WorkStatusTask, StatusContract, WorkStatus } from '@config/enum';
 
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { Jobfield } from '@module/jobfield/entity/jobfield.entity';
-import { Contract } from '@module/contract/entity/contract.entity';
-import { User } from '@module/user/entity/user.entity';
 import { Task } from '@module/task/entity/task.entity';
 
 @Entity()
@@ -35,17 +33,9 @@ export class Job {
   @Column({ type: 'varchar' })
   user_code: string;
 
-  @ManyToOne(() => User, (user) => user.userJob)
-  @JoinColumn({ name: 'user_code', referencedColumnName: 'code' })
-  userJob?: User;
-
   @ManyToOne(() => Jobfield, (jobfield) => jobfield.jobfield)
   @JoinColumn({ name: 'jobfield_id', referencedColumnName: 'id' })
   jobfield?: Jobfield;
-
-  @ManyToOne(() => Contract, (contract) => contract.contract)
-  @JoinColumn({ name: 'contract_id', referencedColumnName: 'id' })
-  contract?: Contract;
 
   @OneToMany(() => Task, (task) => task.job, { cascade: true })
   task?: Task[];

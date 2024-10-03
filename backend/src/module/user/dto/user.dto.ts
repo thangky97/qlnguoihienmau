@@ -16,33 +16,13 @@ export class UserDto {
   @IsOptional()
   @IsString()
   address: string;
-  @IsNumber()
-  @IsOptional()
-  department_id: number;
-  @IsOptional()
-  @IsString()
-  company_tax_code: string;
   @IsString()
   phone?: string;
-  @IsString()
-  gender?: Gender;
   @IsString()
   status?: Status;
   @IsString()
   role: Role;
-  @IsOptional()
-  @IsString()
-  verify?: Verify;
   @IsArray()
   @ArrayUnique((o) => o.management)
   authorities: AuthorityDto[];
-  @IsOptional()
-  @IsNumber()
-  referral_source_id: number | null;
-  @IsNumber()
-  @IsOptional()
-  company_id: number | null;
-  @IsNumber()
-  @IsOptional()
-  branch_id: number | null;
 }

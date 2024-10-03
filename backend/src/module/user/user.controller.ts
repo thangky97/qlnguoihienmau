@@ -187,16 +187,4 @@ export class UserController {
       throw error.response;
     }
   }
-  @UseGuards(AtGuard)
-  // @CheckAuthority(Management.USER, 'D')
-  @Post('delete_company')
-  @HttpCode(HttpStatus.OK)
-  async deletecompany(@Query() query: any) {
-    try {
-      return await this.usersService.delete_company(query);
-    } catch (error) {
-      this.logger.error('url: USER/delete - message: ' + error?.message + ' - response: ' + error?.response);
-      throw error.response;
-    }
-  }
 }

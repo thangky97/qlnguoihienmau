@@ -10,19 +10,11 @@ import { ContractFilterDto } from '@module/contract/dto/contract.filter.dto';
 import { ContractUDDto } from '@module/contract/dto/contractUD.dto';
 import { Job } from '@module/job/entity/job.entity';
 import { Task } from '@module/task/entity/task.entity';
-import { NoteHistoryContract } from '@module/note_history_contract/entity/note_history_contract.entity';
 import { ProcessingStatus, StatusContract, WorkStatus, WorkStatusJob, WorkStatusTask } from '@config/enum';
-import { stat } from 'fs';
 
 @Injectable()
 export class ContractService {
-  constructor(
-    @InjectRepository(Contract) private readonly contractRepository: Repository<Contract>,
-    private readonly commonService: CommonService,
-    @InjectRepository(Job) private readonly jobRepository: Repository<Job>,
-    @InjectRepository(Task) private readonly taskRepository: Repository<Task>,
-    @InjectRepository(NoteHistoryContract) private readonly noteHistoryContractRepository: Repository<NoteHistoryContract>,
-  ) {}
+  constructor(@InjectRepository(Contract) private readonly contractRepository: Repository<Contract>, private readonly commonService: CommonService, @InjectRepository(Job) private readonly jobRepository: Repository<Job>, @InjectRepository(Task) private readonly taskRepository: Repository<Task>) {}
   makeObjectQuery(startDate: Date, endDate: Date) {
     if (startDate && endDate) {
       return Raw((alias) => `${alias} >= :startDate and  ${alias} <= :endDate`, { startDate, endDate });
@@ -41,19 +33,7 @@ export class ContractService {
     try {
       const newContract = await this.contractRepository.save(contract);
 
-      if (newContract) {
-        const newNoteHistory = this.noteHistoryContractRepository.create({
-          contract_id: newContract.id,
-          processingStatus: newContract?.processingStatus,
-          note: newContract.note || '',
-        });
-
-        await this.noteHistoryContractRepository.save(newNoteHistory);
-
-        return newContract;
-      }
-
-      return null;
+      return newContract;
     } catch (error) {
       console.log(error);
     }
@@ -69,11 +49,8 @@ export class ContractService {
           workstatus: body.filter.workstatus,
           customer_code: body?.filter?.customer_code || undefined,
           user_code: body?.filter?.user_code || undefined,
-          jobfield_id: body?.filter?.jobfield_id || undefined,
-          inquiry_id: body?.filter?.inquiry_id || undefined,
         },
       },
-      relations: { customer: true, jobfield: true, inquiry: true, contractUser: true },
     });
   }
 
@@ -81,8 +58,6 @@ export class ContractService {
     return await this.contractRepository.find({
       where: {
         name: query.name && Like(`%${query.name}%`),
-        jobfield_id: query.jobfield_id,
-        inquiry_id: query.inquiry_id,
         customer_code: query.customer_code,
         user_code: query.user_code,
         status: query.status,
@@ -90,7 +65,6 @@ export class ContractService {
         processingStatus: query?.processingStatus,
         created_at: (query.startDate || query.endDate) && this.makeObjectQuery(query.startDate, query.endDate),
       },
-      relations: { customer: true, jobfield: true, inquiry: true, contractUser: true, contract: true },
       order: {
         id: 'DESC',
       },
@@ -98,48 +72,23 @@ export class ContractService {
   }
 
   async findAllTask(query) {
-    const { id, workstatus, jobfield_id, job_id, user_code } = query;
+    const { id } = query;
 
     const contracts = await this.contractRepository.find({
       where: {
         id,
-      },
-      relations: {
-        contract: {
-          task: {
-            jobfield: {
-              workingprocesstemplate: true,
-            },
-            job: true,
-          },
-        },
       },
       order: {
         id: 'DESC',
       },
     });
 
-    // Lấy tất cả các tasks từ contracts
-    let tasks = contracts.flatMap((contract) => contract.contract.flatMap((c) => c.task));
-
-    // Áp dụng các bộ lọc một cách rõ ràng
-    if (workstatus) {
-      tasks = tasks.filter((task) => task.workstatus == workstatus);
-    }
-    if (jobfield_id) {
-      tasks = tasks.filter((task) => task.jobfield_id == jobfield_id);
-    }
-    if (job_id) {
-      const jobIdNum = Number(job_id);
-      tasks = tasks.filter((task) => task.job_id == jobIdNum);
-    }
-
-    return tasks;
+    return contracts;
   }
 
   async getDetail(id: number) {
     try {
-      const data = await this.findOne({ where: { id: id }, relations: { customer: true, jobfield: true, inquiry: true, contractUser: true } });
+      const data = await this.findOne({ where: { id: id } });
       return data;
     } catch (error) {
       console.log(error);
@@ -149,13 +98,6 @@ export class ContractService {
     try {
       const data = await this.findOne({
         where: { id: id },
-        relations: {
-          contract: {
-            task: {
-              department: true,
-            },
-          },
-        },
       });
       return data;
     } catch (error) {
@@ -189,15 +131,6 @@ export class ContractService {
         ...existingContract,
         ...contract,
       });
-
-      // Tạo bản ghi mới trong noteHistoryContract dựa trên thông tin contract đã cập nhật
-      const newNoteHistory = this.noteHistoryContractRepository.create({
-        contract_id: updatedContract.id,
-        processingStatus: updatedContract.processingStatus,
-        note: updatedContract.note || '',
-      });
-
-      await this.noteHistoryContractRepository.save(newNoteHistory);
 
       return updatedContract;
     } catch (error) {
@@ -279,9 +212,6 @@ export class ContractService {
     try {
       // Cập nhật các job liên quan để hủy ràng buộc với contract
       await this.jobRepository.update({ contract_id: query?.id }, { contract_id: null });
-
-      // Cập nhật các note_history_contract liên quan để hủy ràng buộc với contract
-      await this.noteHistoryContractRepository.update({ contract_id: query?.id }, { contract_id: null });
 
       // Sau đó xóa contract
       await this.contractRepository.delete({
