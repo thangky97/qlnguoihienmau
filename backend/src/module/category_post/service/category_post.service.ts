@@ -41,6 +41,19 @@ export class CategoryPostService {
     });
   }
 
+  async findUser(body: CategoryPostFilterDto) {
+    return await this.commonService.getTotalAndList({
+      tableName: 'category_post',
+      body: {
+        ...body,
+        filter: {
+          name: body.filter.name && Like(`%${body.filter.name}%`),
+          status: body.filter.status,
+        },
+      },
+    });
+  }
+
   async findAll(@Query() query: CategoryPostQueryDto) {
     return await this.categoryPostRepository.find({
       where: {

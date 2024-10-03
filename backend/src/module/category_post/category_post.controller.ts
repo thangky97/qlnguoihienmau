@@ -40,6 +40,12 @@ export class CategoryPostController {
     return await this.categoryPostService.find(body);
   }
 
+  @Post('find-user')
+  @HttpCode(HttpStatus.OK)
+  async findUser(@Body() body: CategoryPostFilterDto) {
+    return await this.categoryPostService.findUser(body);
+  }
+
   @Get('find-all')
   @HttpCode(HttpStatus.OK)
   async findAll(@Query() query: CategoryPostQueryDto) {
