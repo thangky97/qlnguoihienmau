@@ -22,16 +22,14 @@ const BoxItem: React.FC<{
         <h3 className="text-subtitle font-bold  mb-7 text-dot text-dot-1 text-balck">
           {title || ""}
         </h3>
-        <p
-          className="text-base  m-0 text-dot text-dot-3 text-black"
-          dangerouslySetInnerHTML={{
-            __html: content || ""
-          }}
-        />
+        <p className="text-base  m-0 text-dot text-dot-3 text-black">
+          {content || ""}
+        </p>
       </div>
       <div className="group flex items-center cursor-pointer">
         <span
-          className="mr-2.5 text-base group-hover:text-red-100" style={{ color: "#037ddc"}}
+          className="mr-2.5 text-base group-hover:text-red-100"
+          style={{ color: "#037ddc" }}
           onClick={() => navigate(ROUTES.DETAIL_DOC + "?id=" + postId)}
         >
           {tranlsate("detail")}

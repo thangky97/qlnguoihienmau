@@ -39,14 +39,14 @@ class CategoryService {
       Request.send({
         data: data,
         method: "POST",
-        path: "/categoryPost/user-get-list"
-      }).then((res: any) => {
-        if (res.statusCode === 200) {
-          resolve(new Response({ data: res.data, isSuccess: true }));
-        } else {
-          resolve(new Response({ isSuccess: false, error: res.error }));
-        }
-      });
+        path: "/category_post/find-user"
+      })
+        .then(res => {
+          resolve({ data: res, isSuccess: true });
+        })
+        .catch(res => {
+          resolve({ isSuccess: false });
+        });
     });
   }
 

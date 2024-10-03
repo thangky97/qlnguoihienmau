@@ -155,6 +155,11 @@ export const LIST_LANDING_HEADER_USER = [
     path: "/"
   },
   {
+    name: "blog",
+    key: "blog",
+    path: ROUTES.BLOG
+  },
+  {
     name: "support",
     key: "support",
     path: "",

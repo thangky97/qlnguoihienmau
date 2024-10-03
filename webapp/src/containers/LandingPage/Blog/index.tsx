@@ -25,18 +25,10 @@ const Blog: React.FC<{}> = () => {
     }
   };
 
+  console.log(id);
+
   function getData(params: any) {
-    LandingService.getContent({
-      page: {
-        page: 1,
-        limit: 4
-      },
-      filter: {},
-      sort: {
-        by: "sequence",
-        type: "ASC"
-      }
-    }).then((res: IResponse) => {
+    LandingService.getContent(params).then((res: IResponse) => {
       if (res.isSuccess) {
         setDataPost(res.data.list);
         setTotal(res.data.total);
@@ -46,27 +38,27 @@ const Blog: React.FC<{}> = () => {
     });
   }
 
-  // useEffect(() => {
-  //   if (id) {
-  //     let paramsFilterDetail = {
-  //       filter: {
-  //         type: "blog",
-  //         open: 1,
-  //         categoryPostId: parseInt(id),
-  //       },
-  //       skip: 0,
-  //       limit: 10,
-  //       order: {
-  //         key: "updatedAt",
-  //         value: "ASC"
-  //       }
-  //     };
+  useEffect(() => {
+    if (id) {
+      let paramsFilterDetail = {
+        filter: {
+          category_post_id: parseInt(id)
+        },
+        page: {
+          page: 1,
+          limit: 10
+        },
+        sort: {
+          by: "sequence",
+          type: "ASC"
+        }
+      };
 
-  //     getData(paramsFilterDetail);
-  //   } else {
-  //     getData(paramsFilter);
-  //   }
-  // }, [i18n.language, id]);
+      getData(paramsFilterDetail);
+    } else {
+      getData(paramsFilter);
+    }
+  }, [id]);
 
   return (
     <div id="blog" className="sm:p-2.5 sm:mt-12 xl:pt-24">
@@ -83,7 +75,7 @@ const Blog: React.FC<{}> = () => {
         />
       </Space> */}
 
-      {/* <div className="flex">
+      <div className="flex">
         <div
           className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 2xl:m-0 gap-2.5"
           style={{ margin: "auto" }}
@@ -94,14 +86,8 @@ const Blog: React.FC<{}> = () => {
               <BoxItem
                 key={item.id}
                 postId={item?.id || 0}
-                title={
-                  (item.document_labels && item.document_labels[0]?.label) || ""
-                }
-                content={
-                  (item.document_contents &&
-                    item.document_contents[0]?.short_content) ||
-                  ""
-                }
+                title={item.name || ""}
+                content={item.content || ""}
               />
             ))}
         </div>
@@ -123,7 +109,7 @@ const Blog: React.FC<{}> = () => {
             }}
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 };

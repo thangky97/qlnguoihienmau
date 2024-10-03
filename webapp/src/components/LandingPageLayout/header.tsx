@@ -119,49 +119,46 @@ function Header() {
   ];
 
   const paramsFilterCategoryPost = {
-    filter: {
-      status: 1,
-      lang: i18n.language
+    filter: {},
+    sort: {
+      by: "id",
+      type: "desc"
     },
-    skip: 0,
-    limit: 20,
-    order: [
-      {
-        key: "id",
-        value: "desc"
-      }
-    ]
+    page: {
+      page: 1,
+      limit: 20
+    }
   };
 
-  // useEffect(() => {
-  //   CategoryService.getListCategoryPost(paramsFilterCategoryPost)
-  //     .then((res: any) => {
-  //       let data: any;
-  //       if (user?.isLoggedIn) {
-  //         data = LIST_LANDING_HEADER_USER;
-  //       } else {
-  //         data = LIST_LANDING_HEADER;
-  //       }
-  //       data[4] = {
-  //         name: "blog",
-  //         key: "blog",
-  //         path: "/blog",
-  //         children: res?.data?.data.map((item: any) => {
-  //           return {
-  //             name: item?.name || "",
-  //             key: item?.name || "",
-  //             path: `/blog/${item?.id}`
-  //           };
-  //         })
-  //       };
-  //       setMenuList(data);
-  //     })
-  //     .catch((error: any) => {
-  //       if (user?.isLoggedIn) {
-  //         setMenuList(LIST_LANDING_HEADER_USER);
-  //       }
-  //     });
-  // }, [i18n.language]);
+  useEffect(() => {
+    CategoryService.getListCategoryPost(paramsFilterCategoryPost)
+      .then((res: any) => {
+        let data: any;
+        if (user?.isLoggedIn) {
+          data = LIST_LANDING_HEADER_USER;
+        } else {
+          data = LIST_LANDING_HEADER;
+        }
+        data[1] = {
+          name: "blog",
+          key: "blog",
+          path: "/blog",
+          children: res?.data?.list.map((item: any) => {
+            return {
+              name: item?.name || "",
+              key: item?.name || "",
+              path: `/blog/${item?.id}`
+            };
+          })
+        };
+        setMenuList(data);
+      })
+      .catch((error: any) => {
+        if (user?.isLoggedIn) {
+          setMenuList(LIST_LANDING_HEADER_USER);
+        }
+      });
+  }, [i18n.language]);
 
   return (
     <div id="header" className="header">
